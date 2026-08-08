@@ -1,0 +1,181 @@
+site_name: Personal Knowledge Notebook
+site_url: https://articles.scuarmander.com
+site_author: Greivin Venegas
+site_description: >
+  Simple guides, technical notes, homelab ideas, troubleshooting, and the lessons learned along the way.
+
+theme:
+  name: material
+  language: en
+  custom_dir: overrides
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+
+  font:
+    text: Inter
+    code: Red Hat Mono
+
+  features:
+    - navigation.tabs
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Light mode
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+
+  - Apple:
+      - How to:      
+        - Import SSH key: apple/import-ssh-key-on-macos.md
+        - Edit Hosts file: apple/edit-hosts-file-on-macos.md
+        - Download macOS ISO: apple/download-macos-iso.md
+        - Change Zsh to Bash: apple/change-macos-shell-to-bash.md
+        - Use external SSD as /home: apple/mac-mini-external-ssd.md
+        - Run macOS on Proxmox: apple/macos-on-proxmox.md
+        - Install command tree: apple/tree-command-on-macos.md
+        - Install Chrome - Homebrew: apple/install-google-chrome-on-macos-with-homebrew.md
+        - Mount persistent NFS : apple/persistent-nfs-mount-on-macos-direct-map-sip-compatible.md
+        - Search entire system: apple/search-the-entire-system.md
+      - Troubleshooting:
+        - Malware warning: apple/fix-apple-could-not-verify-malware-warning.md
+        - Synology Active Backup Snapshots Filling Mac Disk: apple/macbook-low-disk-space-after-synology-active-backup.md
+
+  - Bash:
+      - Delete files: bash/delete-files.md
+      - for loop: bash/for-loop.md
+      - grep: bash/grep-command.md
+      - nano: bash/nano-command.md
+      - sed: bash/sed-command.md
+      - Delete all but one file: bash/delete-all-files-except-one.md
+      - Redirect output: bash/redirect-command-output-to-a-file.md
+      - tail: bash/tail.md
+      - tmux cheat sheet: bash/the-ultimate-tmux-cheat-sheet-guide.md
+
+  - Docker:
+      - Update Portainer: docker/update-portainer-manually.md
+      - Backup bind mounts: docker/backup-docker-bind-mount-volumes-and-archive-folders-via-cli.md
+      - Disclaimer page: docker/how-i-created-the-disclaimer-page.md
+      - BookStack: docker/docker-compose-bookstack.md
+      - Guacamole: docker/docker-compose-guacamole.md
+      - Keycloak with SSL: docker/docker-compose-keycloak-with-ssl-enabled.md
+      - docker compose not found: docker/docker-compose-up-d-bash-docker-compose-command-not-found.md
+      - Docker on Pi 4: docker/docker-on-raspberry-pi4.md
+      - Docker without sudo: docker/run-docker-commands-without-sudo.md
+      - Run Compose YAML: docker/run-a-docker-compose-yaml-file.md
+      - WordPress upload permissions: docker/fix-wordpress-file-upload-permissions-in-docker.md
+      - Install Docker on macOS: docker/install-docker-on-macos.md
+      - Install Docker on Ubuntu: docker/install-docker-on-ubuntu.md
+      - Install Docker on Windows: docker/install-docker-on-windows.md
+      - File Browser admin password: docker/filebrowser-default-admin-password-does-not-work.md
+      - File Browser admin password 2: docker/filebrowser-default-admin-password-does-not-work-2.md
+
+  - Learning:
+      - RHCSA:
+          - Curriculum: learning/rhcsa/curriculum.md
+          - Lab State: learning/rhcsa/lab_state.md
+          - Session log: learning/rhcsa/session_log.md
+          - Progress Tracker: learning/rhcsa/progress.md
+          - Initial diagnostic: learning/rhcsa/assessments/00-initial-diagnostic.md
+
+  - Linux:
+      - General:
+          - CLI basics: linux/cli-navigation-basics.md
+          - SSH config example: linux/configure-ssh-on-debian-example.md
+          - Install SSH: linux/install-ssh.md
+          - SSH: linux/ssh.md
+          - Shell expansions: linux/shell-expansions.md
+          - Hard vs soft links: linux/hard-links-vs-soft-links.md
+          - MX Master 3S gestures: linux/configure-logitech-mx-master-3s-gestures-on-linux.md
+          - iCloud Mail: linux/icloud-mail-on-linux.md
+
+      - Debian:
+          - Debian 12 to 13: linux/upgrade-debian-12-bookworm-to-debian-13-trixie.md
+          - Install PowerShell: linux/install-powershell-on-debian.md
+          - Compress to TGZ: linux/compress-files-and-directories-to-tgz-on-debian.md
+          - Install AppImageLauncher: linux/install-appimagelauncher-on-debian.md
+          - Map SMB share: linux/map-an-smb-network-share-on-debian.md
+          - cdrom repo error: linux/fix-cdrom-release-file-error-on-debian.md
+          - sudoers error: linux/fix-user-is-not-in-the-sudoers-file-on-debian.md
+          - dpkg lock error: linux/fix-dpkg-lock-frontend-cache-lock-error-on-debian.md
+          - wget certificate error: linux/fix-wget-certificate-not-trusted-error-on-debian.md
+          - Debian repo update fix: linux/fix-debian-repository-update-issue.md
+          - RDP to Debian: linux/rdp-to-debian.md
+
+      - Ubuntu:
+          - Install AutoKey: linux/install-autokey-on-ubuntu-24-04-lts.md
+          - Chrome keyring prompt: linux/stop-ubuntu-keyring-from-asking-for-authentication-when-chrome-opens.md
+          - Install OBS: linux/install-obs-on-ubuntu.md
+
+      - RHEL:
+          - RHEL 10 GPG and SSL issues: linux/fix-gpg-key-mismatch-rhsm-ssl-trust-and-selinux-epel-conflict-on-rhel-10.md
+
+      - Proxmox:
+          - Proxmox hardware hang: linux/fix-detected-hardware-unit-hang-in-proxmox.md
+          - Import OVF: linux/import-ovf-into-proxmox.md
+          - Proxmox lost ping: linux/fix-proxmox-not-responding-to-ping-after-reconnecting-ethernet.md
+          - Proxmox 0xc0000428: linux/fix-proxmox-error-0xc0000428-during-windows-10-scsi-install.md
+          - Restore root login: linux/re-enable-root-pam-in-proxmox-and-restore-webui-access.md
+          - Zabbix disk full: linux/fix-zabbix-appliance-out-of-disk-space-on-almalinux-proxmox.md
+
+      - ESXi:
+          - Add vTPM without vCenter: linux/add-vtpm-in-esxi-without-vcenter.md
+          - DeskMeet PSOD: linux/esxi-deskmeet-psod.md
+          - Renew SSL certificate: linux/import-or-renew-esxi-ssl-certificate.md
+
+      - Synology:
+          - VMware CBT issue: linux/synology-abb-vmware-cbt-is-not-enabled-on-vm.md
+
+      - Git:
+          - Git repo over SSH: linux/create-a-git-repo-from-an-existing-folder-over-ssh-gitea-port-3022.md
+
+      - NVIDIA:
+          - Unified memory error: linux/fix-nvidia-unified-memory-array-index-out-of-bounds-error.md
+
+  - Microsoft:
+      - Windows license in use: microsoft/check-windows-license-with-powershell.md
+      - Useful commands: microsoft/useful-commands.md
+      - Install drivers manually: microsoft/install-drivers-manually-on-windows-10-11-and-server.md
+      - Hide clock and date: microsoft/hide-time-and-date-in-windows-taskbar-with-powershell.md
+      - CRT and KEY to PFX: microsoft/convert-crt-and-key-to-pfx-with-openssl.md
+
+  - YouTube:
+      - Emporia notifications: youtube/emporia-notifications.md
