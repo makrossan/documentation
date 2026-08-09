@@ -2,23 +2,23 @@
 
 Authoritative scale: `⬜ Not Started` · `🟨 Learning` · `🟦 Can Perform With Help` · `🟩 Can Perform Independently`
 
-An objective reaches green only after an unaided, verified performance. For persistent configuration, evidence includes a reboot check when practical. The evidence column should point to a dated entry in `SESSION_LOG.md`.
+An objective reaches green only after an unaided, verified performance. For persistent configuration, evidence includes a reboot check when practical. The evidence column should point to a dated entry in `session_log.md`.
 
 ## Understand and use essential tools
 
 | Objective | Level | Last assessed | Evidence / next action |
 |---|---:|---|---|
-| Access a shell prompt and issue commands with correct syntax | ⬜ | — | Initial diagnostic |
-| Use input-output redirection (`>`, `>>`, `|`, `2>`, etc.) | ⬜ | — | Initial diagnostic |
-| Use grep and regular expressions to analyze text | ⬜ | — | Initial diagnostic |
-| Access remote systems using SSH | ⬜ | — | Initial diagnostic |
+| Access a shell prompt and issue commands with correct syntax | 🟦 | 2026-08-09 | Completed the diagnostic after feedback; command/option/operand structure begins Module 1 |
+| Use input-output redirection (`>`, `>>`, `|`, `2>`, etc.) | 🟩 | 2026-08-09 | Independently used pipelines, append redirection, and corrected stderr redirection; retest use of truncation vs append |
+| Use grep and regular expressions to analyze text | 🟦 | 2026-08-09 | Exact anchored results completed with full syntax help; schedule unaided retest |
+| Access remote systems using SSH | 🟩 | 2026-08-09 | Successful remote login to `10.11.11.46` as `student`; secondary authentication remains unavailable |
 | Log in and switch users in multi-user targets | ⬜ | — | Module 1/2 |
-| Archive, compress, unpack, and uncompress files using tar, gzip, and bzip2 | ⬜ | — | Initial diagnostic |
-| Create and edit text files | ⬜ | — | Initial diagnostic |
-| Create, delete, copy, and move files and directories | ⬜ | — | Initial diagnostic |
-| Create hard and soft links | ⬜ | — | Initial diagnostic |
-| List, set, and change standard ugo/rwx permissions | ⬜ | — | Initial diagnostic |
-| Locate, read, and use `man`, `info`, and `/usr/share/doc` | ⬜ | — | Initial diagnostic |
+| Archive, compress, unpack, and uncompress files using tar, gzip, and bzip2 | 🟦 | 2026-08-09 | Created and listed gzip/bzip2 tar archives after hints; extraction and unaided retest remain |
+| Create and edit text files | 🟩 | 2026-08-09 | Exact inventory and report content created independently |
+| Create, delete, copy, and move files and directories | 🟩 | 2026-08-09 | Created, cleaned, copied, moved, and verified workspace independently |
+| Create hard and soft links | 🟩 | 2026-08-09 | Both link types created correctly and final link evidence supplied |
+| List, set, and change standard ugo/rwx permissions | 🟦 | 2026-08-09 | File `0640` and directory `0750` correct; directory traversal clarified with help; retest independently |
+| Locate, read, and use `man`, `info`, and `/usr/share/doc` | 🟦 | 2026-08-09 | Located valid `ls` indicator documentation after hints; practice concise extraction plus `info` and `/usr/share/doc` |
 
 ## Manage software
 
@@ -51,7 +51,7 @@ An objective reaches green only after an unaided, verified performance. For pers
 | Locate and interpret system log files and journals | ⬜ | — | Module 4 |
 | Preserve system journals | ⬜ | — | Module 4 |
 | Start, stop, and check the status of network services | ⬜ | — | Module 4/5 |
-| Securely transfer files between systems | ⬜ | — | Initial diagnostic / Module 5 |
+| Securely transfer files between systems | ⬜ | 2026-08-09 | Correct SCP attempt reached secondary SSH; transfer blocked because `student` is absent there |
 
 ## Configure local storage
 
@@ -116,10 +116,10 @@ An objective reaches green only after an unaided, verified performance. For pers
 
 | Level | Count |
 |---|---:|
-| ⬜ Not Started | 63 |
+| ⬜ Not Started | 53 |
 | 🟨 Learning | 0 |
-| 🟦 Can Perform With Help | 0 |
-| 🟩 Can Perform Independently | 0 |
+| 🟦 Can Perform With Help | 5 |
+| 🟩 Can Perform Independently | 5 |
 
-Weakest areas: not yet measured. First update follows the initial diagnostic.
+Current weak areas: command/operand structure, concise documentation use, precise regular expressions, archive extraction, and directory permission semantics. These are scheduled for guided work and unaided retesting.
 

@@ -62,6 +62,8 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+#  - VIM: cheatsheets/vim.md
+#  - TMUX: cheatsheets/tmux.md
 
   - Apple:
       - How to:      
@@ -114,8 +116,10 @@ nav:
           - Lab State: learning/rhcsa/lab_state.md
           - Session log: learning/rhcsa/session_log.md
           - Progress Tracker: learning/rhcsa/progress.md
-          - Initial diagnostic: learning/rhcsa/assessments/00-initial-diagnostic.md
-
+          - Assessments:
+              - Initial diagnostic: learning/rhcsa/assessments/00-initial-diagnostic.md
+          - Modules:
+              - Lesson 1 — Command Anatomy and Local Documentation: learning/rhcsa/modules/01-essential-tools/01-command-anatomy-and-documentation.md
   - Linux:
       - General:
           - CLI basics: linux/cli-navigation-basics.md

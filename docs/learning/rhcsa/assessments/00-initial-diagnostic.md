@@ -92,4 +92,4 @@ Do not include passwords, private keys, subscription data, or tokens.
 
 ## Grading policy
 
-The result will be graded for correctness, safety, command choice, verification quality, and independent execution. Mistakes receive hints before a full solution. Ratings and the Module 1 pace should be recorded in `PROGRESS.md` and `SESSION_LOG.md`.
+The result will be graded for correctness, safety, command choice, verification quality, and independent execution. Mistakes receive hints before a full solution. Ratings and the Module 1 pace will then be recorded in `progress.md` and `session_log.md`.
