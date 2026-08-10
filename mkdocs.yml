@@ -66,6 +66,17 @@ markdown_extensions:
 nav:
   - Home: index.md
 
+  - Learning:
+      - RHCSA:
+          - Curriculum: learning/rhcsa/curriculum.md
+          - Lab State: learning/rhcsa/lab_state.md
+          - Session log: learning/rhcsa/session_log.md
+          - Progress Tracker: learning/rhcsa/progress.md
+          - Assessments:
+              - Initial diagnostic: learning/rhcsa/assessments/00-initial-diagnostic.md
+          - Modules:
+              - Lesson 1 — Command Anatomy and Local Documentation: learning/rhcsa/modules/01-essential-tools/01-command-anatomy-and-documentation.md
+ 
   - Apple:
       - How to:      
         - Import SSH key: apple/import-ssh-key-on-macos.md
@@ -110,17 +121,6 @@ nav:
       - Install Docker on Windows: docker/install-docker-on-windows.md
       - File Browser admin password: docker/filebrowser-default-admin-password-does-not-work.md
       - File Browser admin password 2: docker/filebrowser-default-admin-password-does-not-work-2.md
-
-  - Learning:
-      - RHCSA:
-          - Curriculum: learning/rhcsa/curriculum.md
-          - Lab State: learning/rhcsa/lab_state.md
-          - Session log: learning/rhcsa/session_log.md
-          - Progress Tracker: learning/rhcsa/progress.md
-          - Assessments:
-              - Initial diagnostic: learning/rhcsa/assessments/00-initial-diagnostic.md
-          - Modules:
-              - Lesson 1 — Command Anatomy and Local Documentation: learning/rhcsa/modules/01-essential-tools/01-command-anatomy-and-documentation.md
   - Linux:
       - General:
           - CLI basics: linux/cli-navigation-basics.md
