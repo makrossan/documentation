@@ -1,178 +1,273 @@
 ---
-title: Vim Cheat Sheet by Mode
-description: A quick Vim reference organized by Normal, Insert, Command-line, and Visual modes.
+title: Vim Cheat Sheet
+description: A visual Vim reference organized by mode.
+hide:
+  - navigation
+  - toc
 ---
 
-# Vim Cheat Sheet by Mode
+<div class="cheatsheet-page cheatsheet-page--vim">
+<main class="outer">
+    <div class="page-header">
+      <div class="page-title">
+        <h1>Vim Cheat Sheet by Mode</h1>
+        <p>Organized in the same order of daily use, Normal, Insert, Command Line, Visual.</p>
+      </div>
+      <div class="header-right">
+        <a href="/#cheat-sheets" class="back-button">Back to the dashboard</a>
+        <div class="mode-pill-row">
+          <div class="mode-pill"><span class="key">Esc</span><span>Normal Mode</span></div>
+          <div class="mode-pill"><span class="key">i</span><span>Insert Mode</span></div>
+          <div class="mode-pill"><span class="key">:</span><span>Command-line Mode</span></div>
+          <div class="mode-pill"><span class="key">v</span><span>Visual Mode</span></div>
+        </div>
+      </div>
+    </div>
 
-Organized in the order the modes are commonly used: **Normal**, **Insert**, **Command-line**, and **Visual**.
+    <!-- NORMAL MODE -->
+    <section class="section" id="normal">
+      <div class="section-header">
+        <h2>Normal Mode (Esc)</h2>
+        <span class="tag">Main mode for browsing and editing</span>
+      </div>
+      <div class="section-body">
+        <div class="note">
+          <div class="note-icon">N</div>
+          <div>
+            <strong>Key idea.</strong>
+            In normal mode you navigate, delete, copy and combine movements with actions.
+            You can always return to this mode with <code>Esc</code>.
+          </div>
+        </div>
 
-[← Back to the dashboard](/#cheat-sheets)
+        <div class="grid">
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Basic movement in the file</div>
+            <ul class="cmd-list">
+              <li><code>h j k l</code><span class="desc">Move the cursor, left, down, up, right.</span></li>
+              <li><code>0</code> <span class="desc">Go to the beginning of the line.</span></li>
+              <li><code>^</code> <span class="desc">Go to the first non-space character.</span></li>
+              <li><code>$</code> <span class="desc">Go to the end of the line.</span></li>
+              <li><code>w</code> <span class="desc">Next word start.</span></li>
+              <li><code>b</code> <span class="desc">Beginning of previous word.</span></li>
+              <li><code>e</code> <span class="desc">End of the current word.</span></li>
+              <li><code>gg</code> <span class="desc">Go to the beginning of the file.</span></li>
+              <li><code>G</code> <span class="desc">Go to the end of the file.</span></li>
+              <li><code>nG</code> <span class="desc">go to line <span class="highlight">n</span>.</span></li>
+            </ul>
+          </div>
 
-## Vim Modes
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Movement by blocks and screens</div>
+            <ul class="cmd-list">
+              <li><code>{</code> / <code>}</code><span class="desc">Previous or next paragraph.</span></li>
+              <li><code>%</code><span class="desc">Jump to the pair of parentheses or brackets.</span></li>
+              <li><code>Ctrl + u</code><span class="desc">Media pantalla arriba.</span></li>
+              <li><code>Ctrl + d</code><span class="desc">Media pantalla abajo.</span></li>
+              <li><code>Ctrl + b</code> / <code>Ctrl + f</code><span class="desc">Full page up or down.</span></li>
+              <li><code>H</code> <span class="desc">Position the cursor at the top of the screen.</span></li>
+              <li><code>M</code> <span class="desc">Position cursor in the center of the screen.</span></li>
+              <li><code>L</code> <span class="desc">Position the cursor at the bottom of the screen.</span></li>
+            </ul>
+          </div>
 
-- `Esc` — Normal mode
-- `i` — Insert mode
-- `:` — Command-line mode
-- `v` — Visual mode
+          <!-- COMPLETE QUICK EDITING -->
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Quick edit from normal mode</div>
+            <ul class="cmd-list">
+              <li><span class="highlight">Basic operators</span><span class="desc"><code>d</code> delete, <code>c</code> cambiar, <code>y</code> copy, always combined with a movement.</span></li>
+              <li><code>d{mov}</code> <span class="desc">Delete using a movement, for example <code>dw</code>, <code>d$</code>, <code>d0</code>, <code>d3w</code>.</span></li>
+              <li><code>c{mov}</code> <span class="desc">Change the text covered by the move and enter insert, for example <code>cw</code>, <code>c$</code>.</span></li>
+              <li><code>y{mov}</code> <span class="desc">Copy using a motion, for example <code>yw</code>, <code>y$</code>, <code>yap</code> full paragraph.</span></li>
+              <li><code>dd</code> <span class="desc">Delete entire line.</span></li>
+              <li><code>yy</code> <span class="desc">Copy entire line.</span></li>
+              <li><code>cc</code> <span class="desc">Change entire line and enter insert.</span></li>
+              <li><code>D</code> / <code>C</code> <span class="desc">Delete or change from the cursor to the end of the line, equivalent to <code>d$</code> y <code>c$</code>.</span></li>
+              <li><code>dj</code> / <code>dk</code> <span class="desc">Delete current line and the next or the previous one.</span></li>
+              <li><code>dG</code> <span class="desc">Delete from the current line to the end of the file.</span></li>
+              <li><code>dgg</code> <span class="desc">Delete from the current line to the beginning of the file.</span></li>
+              <li><code>n dd</code> <span class="desc">Delete <span class="highlight">n</span> lines, for example <code>5dd</code>.</span></li>
+              <li><code>xp</code> <span class="desc">Swap two characters, quickly cut and paste.</span></li>
+              <li><code>s</code> <span class="desc">Delete character under the cursor and enter insert.</span></li>
+              <li><code>S</code> <span class="desc">Delete entire line and enter insert, similar to <code>cc</code>.</span></li>
+              <li><code>r</code> <span class="desc">Replace a single character without entering insert.</span></li>
+              <li><code>~</code> <span class="desc">Reverse upper or lower case of the character under the cursor.</span></li>
+              <li><code>gU{mov}</code> / <code>gu{mov}</code> <span class="desc">Convert to upper or lower case using a move, for example <code>gUw</code>.</span></li>
+              <li><code>u</code> <span class="desc">Undo last action.</span></li>
+              <li><code>Ctrl + r</code> <span class="desc">Redo the undone action.</span></li>
+              <li><code>.</code> <span class="desc">Repeat the last complete action, key to fast editing.</span></li>
+            </ul>
+          </div>
 
-## Normal Mode (`Esc`)
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Copy, paste and indent</div>
+            <ul class="cmd-list">
+              <li><code>yy</code> <span class="desc">Copy the entire line.</span></li>
+              <li><code>p</code> <span class="desc">Paste after the cursor or line.</span></li>
+              <li><code>P</code> <span class="desc">Paste before the cursor or line.</span></li>
+              <li><code>gp</code> <span class="desc">Paste and leave the cursor at the end of the pasted text.</span></li>
+              <li><code>J</code> <span class="desc">Join the current line with the next one.</span></li>
+              <li><code>&gt;&gt;</code> <span class="desc">Increase line indentation.</span></li>
+              <li><code>&lt;&lt;</code> <span class="desc">Decrease line indentation.</span></li>
+              <li><code>&gt;{mov}</code> / <code>&lt;{mov}</code> <span class="desc">Increase or decrease indentation in the indicated range, e.g. <code>&gt;ap</code>.</span></li>
+              <li><code>=</code> o <code>={mov}</code> <span class="desc">Auto indentation of the line or range, for example <code>=ap</code>.</span></li>
+            </ul>
+          </div>
 
-*The main mode for navigating and editing.*
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Search from normal mode</div>
+            <ul class="cmd-list">
+              <li><code>/text</code> <span class="desc">Search down.</span></li>
+              <li><code>?text</code> <span class="desc">Search up.</span></li>
+              <li><code>n</code> / <code>N</code> <span class="desc">Next or previous match.</span></li>
+              <li><code>*</code> <span class="desc">Search the word under the down cursor.</span></li>
+              <li><code>#</code> <span class="desc">Search the word under the cursor up.</span></li>
+            </ul>
+          </div>
 
-> **Key idea:** Normal mode is used to navigate, delete, copy, and combine motions with actions. You can always return to this mode by pressing `Esc`.
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Windows, tabs and buffers</div>
+            <ul class="cmd-list">
+              <li><code>Ctrl + w s</code> <span class="desc">Split window horizontally.</span></li>
+              <li><code>Ctrl + w v</code> <span class="desc">Split window vertically.</span></li>
+              <li><code>Ctrl + w w</code> <span class="desc">Switch to the next window.</span></li>
+              <li><code>Ctrl + w h/j/k/l</code> <span class="desc">Moverse entre ventanas.</span></li>
+              <li><code>:tabnew</code> <span class="desc">New tab with an empty buffer.</span></li>
+              <li><code>gt</code> / <code>gT</code> <span class="desc">Next or previous tab.</span></li>
+              <li><code>:ls</code> <span class="desc">List open buffers.</span></li>
+              <li><code>:b n</code> <span class="desc">Go to buffer number <span class="highlight">n</span>.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-### Basic movement within a file
+    <!-- INSERT MODE -->
+    <section class="section" id="insert">
+      <div class="section-header">
+        <h2>Insert Mode (i)</h2>
+        <span class="tag">To enter text and make direct changes</span>
+      </div>
+      <div class="section-body">
+        <div class="note">
+          <div class="note-icon">I</div>
+          <div>
+            <strong>Key idea.</strong>
+            Use insert mode only to type text, then return to normal mode with <code>Esc</code> to move and edit without touching the mouse.
+          </div>
+        </div>
 
-- `h j k l` — Move the cursor left, down, up, and right.
-- `0` — Go to the beginning of the line.
-- `^` — Go to the first non-blank character on the line.
-- `$` — Go to the end of the line.
-- `w` — Go to the beginning of the next word.
-- `b` — Go to the beginning of the previous word.
-- `e` — Go to the end of the current word.
-- `gg` — Go to the beginning of the file.
-- `G` — Go to the end of the file.
-- `nG` — Go to line *n*.
+        <div class="grid">
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Enter insert mode</div>
+            <ul class="cmd-list">
+              <li><code>i</code> <span class="desc">Insertar antes del cursor.</span></li>
+              <li><code>a</code> <span class="desc">Insert after the cursor.</span></li>
+              <li><code>I</code> <span class="desc">Insert at the beginning of the line.</span></li>
+              <li><code>A</code> <span class="desc">Insert at the end of the line.</span></li>
+              <li><code>o</code> <span class="desc">Create new line below and insert.</span></li>
+              <li><code>O</code> <span class="desc">Create new line above and insert.</span></li>
+              <li><code>cc</code> <span class="desc">Change entire line and enter insert.</span></li>
+              <li><code>cw</code> <span class="desc">Cambiar palabra y entrar en insertar.</span></li>
+            </ul>
+          </div>
 
-### Moving by blocks and screens
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Exit insert and useful shortcuts</div>
+            <ul class="cmd-list">
+              <li><code>Esc</code> <span class="desc">Return to normal mode.</span></li>
+              <li><code>Ctrl + h</code> <span class="desc">Delete previous character.</span></li>
+              <li><code>Ctrl + w</code> <span class="desc">Delete previous word.</span></li>
+              <li><code>Ctrl + u</code> <span class="desc">Delete until start of line.</span></li>
+              <li><code>Ctrl + r {register}</code> <span class="desc">Paste content from a record.</span></li>
+              <li><code>Ctrl + n</code> / <code>Ctrl + p</code> <span class="desc">Autocompletar palabras siguientes o anteriores.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-- `{` / `}` — Go to the previous or next paragraph.
-- `%` — Jump to the matching parenthesis or bracket.
-- `Ctrl + u` — Move up half a screen.
-- `Ctrl + d` — Move down half a screen.
-- `Ctrl + b` / `Ctrl + f` — Move up or down a full screen.
-- `H` — Position the cursor at the top of the screen.
-- `M` — Position the cursor in the middle of the screen.
-- `L` — Position the cursor at the bottom of the screen.
+    <!-- COMMAND LINE -->
+    <section class="section" id="command-line">
+      <div class="section-header">
+        <h2>Command-line Mode (:)</h2>
+        <span class="tag">To save, exit, search, configure.</span>
+      </div>
+      <div class="section-body">
+        <div class="note">
+          <div class="note-icon">:</div>
+          <div>
+            <strong>Key idea.</strong>
+            From normal mode, press <code>:</code> to open the command line, there you can use any full Vim command, e.g. <code>:w</code>, <code>:q</code>, <code>:help</code>.
+          </div>
+        </div>
 
-### Quick editing from Normal mode
+        <div class="grid">
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Save and exit</div>
+            <ul class="cmd-list">
+              <li><code>:w</code> <span class="desc">Save file.</span></li>
+              <li><code>:w nuevo_nombre</code> <span class="desc">Save as a new file.</span></li>
+              <li><code>:q</code> <span class="desc">Salir si no hay cambios pendientes.</span></li>
+              <li><code>:q!</code> <span class="desc">Salir descartando cambios.</span></li>
+              <li><code>:wq</code> o <code>:x</code> <span class="desc">Save and exit.</span></li>
+              <li><code>ZZ</code> <span class="desc">Save and exit, shortcut from normal mode.</span></li>
+              <li><code>ZQ</code> <span class="desc">Exit without saving, shortcut from normal mode.</span></li>
+            </ul>
+          </div>
 
-- **Basic operators:** `d` deletes, `c` changes, and `y` copies. Each operator can be combined with a motion.
-- `d{motion}` — Delete using a motion; for example, `dw`, `d$`, `d0`, or `d3w`.
-- `c{motion}` — Change the text covered by a motion and enter Insert mode; for example, `cw` or `c$`.
-- `y{motion}` — Copy using a motion; for example, `yw`, `y$`, or `yap` for a complete paragraph.
-- `dd` — Delete the entire line.
-- `yy` — Copy the entire line.
-- `cc` — Change the entire line and enter Insert mode.
-- `D` / `C` — Delete or change from the cursor to the end of the line; equivalent to `d$` and `c$`.
-- `dj` / `dk` — Delete the current line and the next or previous line.
-- `dG` — Delete from the current line to the end of the file.
-- `dgg` — Delete from the current line to the beginning of the file.
-- `ndd` — Delete *n* lines; for example, `5dd`.
-- `xp` — Swap two characters by quickly cutting and pasting.
-- `s` — Delete the character under the cursor and enter Insert mode.
-- `S` — Delete the entire line and enter Insert mode, similar to `cc`.
-- `r` — Replace a single character without entering Insert mode.
-- `~` — Toggle the case of the character under the cursor.
-- `gU{motion}` / `gu{motion}` — Convert text to uppercase or lowercase using a motion; for example, `gUw`.
-- `u` — Undo the last action.
-- `Ctrl + r` — Redo the action that was undone.
-- `.` — Repeat the last complete action; this is essential for fast editing.
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Global Search and Replace</div>
+            <ul class="cmd-list">
+              <li><code>:%s/viejo/nuevo/g</code> <span class="desc">Replace throughout the file.</span></li>
+              <li><code>:%s/viejo/nuevo/gc</code> <span class="desc">Replace in entire file with commit.</span></li>
+              <li><code>:s/viejo/nuevo/</code> <span class="desc">Replace only on the current line.</span></li>
+              <li><code>:'&lt;,'&gt;s/viejo/nuevo/g</code> <span class="desc">Replace within a visual selection.</span></li>
+              <li><code>:noh</code> <span class="desc">Remove search highlighting.</span></li>
+            </ul>
+          </div>
 
-### Copying, pasting, and indentation
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Work with files, buffers and tabs</div>
+            <ul class="cmd-list">
+              <li><code>:e file</code> <span class="desc">Edit or open a file.</span></li>
+              <li><code>:bnext</code> / <code>:bprev</code> <span class="desc">Next or previous buffer.</span></li>
+              <li><code>:bd</code> <span class="desc">Close the current buffer.</span></li>
+              <li><code>:tabnew</code> <span class="desc">Create new tab.</span></li>
+              <li><code>:tabclose</code> <span class="desc">Close current tab.</span></li>
+              <li><code>:split</code> / <code>:vsplit</code> <span class="desc">Split window horizontally or vertically.</span></li>
+            </ul>
+          </div>
 
-- `yy` — Copy the entire line.
-- `p` — Paste after the cursor or line.
-- `P` — Paste before the cursor or line.
-- `gp` — Paste and leave the cursor at the end of the inserted text.
-- `J` — Join the current line with the next line.
-- `>>` — Increase the indentation of the current line.
-- `<<` — Decrease the indentation of the current line.
-- `>{motion}` / `<{motion}` — Increase or decrease indentation over the specified range; for example, `>ap`.
-- `=` or `={motion}` — Automatically indent the current line or range; for example, `=ap`.
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Useful configuration options</div>
+            <ul class="cmd-list">
+              <li><code>:set number</code> <span class="desc">Show line numbers.</span></li>
+              <li><code>:set relativenumber</code> <span class="desc">Relative line numbers.</span></li>
+              <li><code>:set hlsearch</code> <span class="desc">Highlight search results.</span></li>
+              <li><code>:set expandtab</code> <span class="desc">Convertir tab en espacios.</span></li>
+              <li><code>:set tabstop=4</code> <span class="desc">Visible tab size.</span></li>
+              <li><code>:set shiftwidth=4</code> <span class="desc">Espacios usados al sangrar.</span></li>
+              <li><code>:help tema</code> <span class="desc">Open help for a topic, for example <code>:help motion.txt</code>.</span></li>
+            </ul>
+          </div>
 
-### Searching from Normal mode
-
-- `/text` — Search forward.
-- `?text` — Search backward.
-- `n` / `N` — Go to the next or previous match.
-- `*` — Search forward for the word under the cursor.
-- `#` — Search backward for the word under the cursor.
-
-### Windows, tabs, and buffers
-
-- `Ctrl + w s` — Split the window horizontally.
-- `Ctrl + w v` — Split the window vertically.
-- `Ctrl + w w` — Switch to the next window.
-- `Ctrl + w h/j/k/l` — Move between windows.
-- `:tabnew` — Create a new tab with an empty buffer.
-- `gt` / `gT` — Go to the next or previous tab.
-- `:ls` — List open buffers.
-- `:b n` — Go to buffer number *n*.
-
-## Insert Mode (`i`)
-
-*For typing text and making direct changes.*
-
-> **Key idea:** Use Insert mode only to type text. Then return to Normal mode with `Esc` so you can navigate and edit without using the mouse.
-
-### Entering Insert mode
-
-- `i` — Insert before the cursor.
-- `a` — Insert after the cursor.
-- `I` — Insert at the beginning of the line.
-- `A` — Insert at the end of the line.
-- `o` — Create a new line below and enter Insert mode.
-- `O` — Create a new line above and enter Insert mode.
-- `cc` — Change the entire line and enter Insert mode.
-- `cw` — Change the word and enter Insert mode.
-
-### Leaving Insert mode and useful shortcuts
-
-- `Esc` — Return to Normal mode.
-- `Ctrl + h` — Delete the previous character.
-- `Ctrl + w` — Delete the previous word.
-- `Ctrl + u` — Delete back to the beginning of the line.
-- `Ctrl + r {register}` — Paste the contents of a register.
-- `Ctrl + n` / `Ctrl + p` — Complete using the next or previous matching word.
-
-## Command-line Mode (`:`)
-
-*For saving, quitting, searching, and configuring Vim.*
-
-> **Key idea:** From Normal mode, press `:` to open the command line. You can then use complete Vim commands such as `:w`, `:q`, and `:help`.
-
-### Saving and quitting
-
-- `:w` — Save the file.
-- `:w new_name` — Save as a new file.
-- `:q` — Quit if there are no unsaved changes.
-- `:q!` — Quit and discard changes.
-- `:wq` or `:x` — Save and quit.
-- `ZZ` — Save and quit from Normal mode.
-- `ZQ` — Quit without saving from Normal mode.
-
-### Search and replace
-
-- `:%s/old/new/g` — Replace all occurrences in the file.
-- `:%s/old/new/gc` — Replace all occurrences in the file with confirmation.
-- `:s/old/new/` — Replace only on the current line.
-- `:'<,'>s/old/new/g` — Replace within a Visual selection.
-- `:noh` — Clear search highlighting.
-
-### Working with files, buffers, and tabs
-
-- `:e file` — Edit or open a file.
-- `:bnext` / `:bprev` — Go to the next or previous buffer.
-- `:bd` — Close the current buffer.
-- `:tabnew` — Create a new tab.
-- `:tabclose` — Close the current tab.
-- `:split` / `:vsplit` — Split the window horizontally or vertically.
-
-### Quick configuration options
-
-- `:set number` — Display line numbers.
-- `:set relativenumber` — Display relative line numbers.
-- `:set hlsearch` — Highlight search results.
-- `:set expandtab` — Convert tabs to spaces.
-- `:set tabstop=4` — Set the displayed width of a tab.
-- `:set shiftwidth=4` — Set the number of spaces used for indentation.
-- `:help topic` — Open help for a topic; for example, `:help motion.txt`.
-
-### Compact `.vimrc` example
-
-```vim
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Ejemplo compacto de .vimrc</div>
+            <pre>
 " Recommended basic configuration
 set number
 set relativenumber
@@ -186,57 +281,91 @@ set clipboard=unnamedplus
 set mouse=a
 
 " Useful shortcuts
-nnoremap <Space> :nohlsearch<CR>
-nnoremap <leader>w :w<CR>
-```
+nnoremap &lt;Space&gt; :nohlsearch&lt;CR&gt;
+nnoremap &lt;leader&gt;w :w&lt;CR&gt;
+            </pre>
+          </div>
 
-### Command-line tips
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Command line tips</div>
+            <ul class="cmd-list">
+              <li><span class="highlight">History</span><span class="desc">Use the up and down arrows to step through previous commands.</span></li>
+              <li><span class="highlight">Ranges</span><span class="desc">You can use ranges, for example <code>:10,20s/old/new/g</code>.</span></li>
+              <li><span class="highlight">Completion</span><span class="desc">Use <code>Tab</code> to complete command and file names.</span></li>
+              <li><span class="highlight">Save as administrator</span><span class="desc">If you forgot to open the file with <code>sudo</code> and don't have permission to save it, use <code>:w !sudo tee %</code> to save changes without leaving Vim.</span></li>
+              <li><span class="highlight">Delete lines containing KSWM</span><span class="desc">Delete every line in the file containing KSWM, kswm, etc.: <code>:g/KSWM\c/d</code></span></li>
+           </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-- **History:** use the Up and Down arrow keys to cycle through previous commands.
-- **Ranges:** commands can use ranges; for example, `:10,20s/old/new/g`.
-- **Completion:** press `Tab` to complete command and file names.
-- **Save as administrator:** if you forgot to open the file with `sudo` and do not have permission to save it, use `:w !sudo tee %` to save your changes without leaving Vim.
-- **Delete lines containing `KSWM`:** to delete every line containing `KSWM`, ignoring case, use `:g/KSWM\c/d`.
+    <!-- VISUAL MODE -->
+    <section class="section" id="visual">
+      <div class="section-header">
+        <h2>Visual Mode (v)</h2>
+        <span class="tag">Select text to copy, delete or modify</span>
+      </div>
+      <div class="section-body">
+        <div class="note">
+          <div class="note-icon">V</div>
+          <div>
+            <strong>Key idea.</strong>
+            In visual mode select text, then apply a command, e.g. <code>d</code> to delete, <code>y</code> to copy, <code>&gt;</code> to bleed.
+          </div>
+        </div>
 
-## Visual Mode (`v`)
+        <div class="grid">
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Selection types</div>
+            <ul class="cmd-list">
+              <li><code>v</code><span class="desc">Select by character.</span></li>
+              <li><code>V</code><span class="desc">Select entire lines.</span></li>
+              <li><code>Ctrl + v</code><span class="desc">Select a rectangular block of columns.</span></li>
+              <li><code>Esc</code><span class="desc">Exit Visual mode.</span></li>
+              <li><code>o</code><span class="desc">Switch the active end of the selection.</span></li>
+          </ul>
+          </div>
 
-*For selecting text and then copying, deleting, or modifying it.*
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Actions on selection</div>
+            <ul class="cmd-list">
+              <li><code>y</code> <span class="desc">Copy the selection.</span></li>
+              <li><code>d</code> <span class="desc">Clear the selection.</span></li>
+              <li><code>c</code> <span class="desc">Change the selection and go to insert.</span></li>
+              <li><code>&gt;</code> / <code>&lt;</code> <span class="desc">Increase or decrease indentation.</span></li>
+              <li><code>=</code> <span class="desc">Auto indentation of the selection.</span></li>
+              <li><code>gU</code> / <code>gu</code> <span class="desc">Convert to upper or lower case.</span></li>
+            </ul>
+          </div>
 
-> **Key idea:** In Visual mode, select some text and then apply a command—for example, `d` to delete, `y` to copy, or `>` to indent.
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Block visual, bulk editing</div>
+            <pre>
+" Insert text at the start of many lines
+Ctrl+v      " blockwise Visual mode
+j j j       " move down to select multiple lines
+I           " insert at the start of the block
+#           " type the desired text
+Esc         " Vim repeats the change on every selected line
+            </pre>
+          </div>
 
-### Selection types
-
-- `v` — Select by character.
-- `V` — Select entire lines.
-- `Ctrl + v` — Select a rectangular block of columns.
-- `Esc` — Leave Visual mode.
-- `o` — Switch the active end of the selection.
-
-### Actions on a selection
-
-- `y` — Copy the selection.
-- `d` — Delete the selection.
-- `c` — Change the selection and enter Insert mode.
-- `>` / `<` — Increase or decrease indentation.
-- `=` — Automatically indent the selection.
-- `gU` / `gu` — Convert the selection to uppercase or lowercase.
-
-### Bulk editing with Visual Block mode
-
-```vim
-" Insert text at the beginning of multiple lines
-Ctrl+v      " Enter Visual Block mode
-j j j       " Move down to select multiple lines
-I           " Insert at the beginning of the block
-#           " Type the desired text
-Esc         " Vim will repeat the change on each selected line
-```
-
-### Guided replacement within a selection
-
-```vim
-" Select the desired range in Visual mode
-:'<,'>s/old/new/gc
-
-" Replaces text only within the selection, with confirmation
-```
+          <div class="box">
+            <div class="box-title">
+              <span class="dot"></span>Guided replacement with selection</div>
+            <pre>
+" In Visual mode, select the range
+:'&lt;,'&gt;s/viejo/nuevo/gc
+" Replace only within the selection, with confirmation
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

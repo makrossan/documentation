@@ -56,7 +56,7 @@ hide:
   }
 
   .home-section {
-    padding: clamp(3.5rem, 8vw, 7rem) 1rem;
+    padding: clamp(1.75rem, 4vw, 3.5rem) 1rem;
     width: 100%;
   }
 
@@ -463,6 +463,24 @@ hide:
     color: var(--md-primary-bg-color);
   }
 
+  /* Readable, understated accents when the Material slate palette is active. */
+  [data-md-color-scheme="slate"] .home-section:not(.home-photo) .home-eyebrow,
+  [data-md-color-scheme="slate"] .home-topic__number {
+    color: #8fa3bc;
+  }
+
+  [data-md-color-scheme="slate"] .home-closing .home-button {
+    border-color: #53657a;
+    color: #9eb1c8;
+  }
+
+  [data-md-color-scheme="slate"] .home-closing .home-button:hover,
+  [data-md-color-scheme="slate"] .home-closing .home-button:focus-visible {
+    background: #263446;
+    border-color: #71859e;
+    color: #e0e7ef;
+  }
+
   /* Reveal-on-scroll: content remains visible when JavaScript is unavailable. */
   .home-page.reveal-ready [data-reveal] {
     opacity: 0;
@@ -596,7 +614,7 @@ hide:
 <span class="answer">Keep it simple. Make it useful.</span></pre>
       </div>
     </div>
-    <a class="home-scroll-hint" href="#about-me" aria-label="Scroll to About Me">↓</a>
+    <a class="home-scroll-hint" href="#topics-title" aria-label="Scroll to Topics">↓</a>
   </section>
 <!--
   <section class="home-section" id="about-me" aria-labelledby="about-title">
@@ -642,7 +660,6 @@ hide:
 -->
   <section class="home-section home-section--soft" id="cheat-sheets" aria-labelledby="cheats-title">
     <div class="home-section__inner">
-      <p class="home-eyebrow" data-reveal>Quick reference</p>
       <h2 class="home-heading" id="cheats-title" data-reveal>Cheat Sheets</h2>
       <p class="home-lead" data-reveal>
         Short, practical references for the tools I reach for often. Open one,
@@ -650,41 +667,39 @@ hide:
       </p>
 
       <div class="home-cards">
-        <a class="home-card" href="cheatsheets/awk/" data-reveal>
-          <div class="home-card__top">
-            <code class="home-card__command">awk</code>
-            <span class="home-card__arrow" aria-hidden="true">→</span>
-          </div>
-          <h3>AWK Cheat Sheet</h3>
-          <p>Patterns, fields, filtering, formatting, and compact text-processing recipes.</p>
-        </a>
 
-        <a class="home-card" href="cheatsheets/regex/" data-reveal>
-          <div class="home-card__top">
-            <code class="home-card__command">.*</code>
-            <span class="home-card__arrow" aria-hidden="true">→</span>
-          </div>
-          <h3>Regular Expressions</h3>
-          <p>Common tokens, anchors, groups, lookarounds, and examples worth keeping nearby.</p>
-        </a>
+  <a class="home-card" href="cheatsheets/vim/" data-reveal>
+    <div class="home-card__top">
+      <code class="home-card__command">vim</code>
+      <span class="home-card__arrow" aria-hidden="true">→</span>
+    </div>
+    <p>Modes, movement, editing, search, substitution, registers, and useful commands.</p>
+  </a>
 
-        <a class="home-card" href="cheatsheets/tmux/" data-reveal>
-          <div class="home-card__top">
-            <code class="home-card__command">tmux</code>
-            <span class="home-card__arrow" aria-hidden="true">→</span>
-          </div>
-          <h3>tmux Cheat Sheet</h3>
-          <p>Sessions, windows, panes, navigation, resizing, and everyday shortcuts.</p>
-        </a>
+  <a class="home-card" href="cheatsheets/tmux/" data-reveal>
+    <div class="home-card__top">
+      <code class="home-card__command">tmux</code>
+      <span class="home-card__arrow" aria-hidden="true">→</span>
+    </div>
+    <p>Sessions, windows, panes, navigation, resizing, and everyday shortcuts.</p>
+  </a>
 
-        <a class="home-card" href="cheatsheets/vim/" data-reveal>
-          <div class="home-card__top">
-            <code class="home-card__command">vim</code>
-            <span class="home-card__arrow" aria-hidden="true">→</span>
-          </div>
-          <h3>Vim Cheat Sheet</h3>
-          <p>Modes, movement, editing, search, substitution, registers, and useful commands.</p>
-        </a>
+  <a class="home-card" href="cheatsheets/regex/#CommonTokens" data-reveal>
+    <div class="home-card__top">
+      <code class="home-card__command">regex .*</code>
+      <span class="home-card__arrow" aria-hidden="true">→</span>
+    </div>
+    <p>Common tokens, anchors, groups, lookarounds, and examples worth keeping nearby.</p>
+  </a>
+
+  <a class="home-card" href="cheatsheets/awk/" data-reveal>
+    <div class="home-card__top">
+      <code class="home-card__command">awk</code>
+      <span class="home-card__arrow" aria-hidden="true">→</span>
+    </div>
+    <p>Patterns, fields, filtering, formatting, and compact text-processing recipes.</p>
+  </a>
+
       </div>
     </div>
   </section>

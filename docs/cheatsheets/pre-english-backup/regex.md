@@ -232,7 +232,7 @@ hide:
           <tbody>
             <tr><td>Swap first and last names</td><td><code>(\w+)\s+(\w+)</code></td><td><code>$2, $1</code></td><td><code>Ada Lovelace</code> → <code>Lovelace, Ada</code></td></tr>
             <tr><td>Reformat ISO date</td><td><code>(\d{4})-(\d{2})-(\d{2})</code></td><td><code>$3/$2/$1</code></td><td><code>2026-07-31</code> → <code>31/07/2026</code></td></tr>
-            <tr><td>Collapse whitespace</td><td><code>\s+</code></td><td>One space</td><td><code>too   many</code> → <code>too many</code></td></tr>
+            <tr><td>Collapse whitespace</td><td><code>\s+</code></td><td>One space</td><td><code>too&nbsp;&nbsp;&nbsp;many</code> → <code>too many</code></td></tr>
             <tr><td>Remove Markdown checkboxes</td><td><code>\[[ xX]\]</code></td><td>Empty text</td><td>Removes <code>[ ]</code>, <code>[x]</code>, and <code>[X]</code></td></tr>
             <tr><td>Wrap every number</td><td><code>(\d+)</code></td><td><code>[$1]</code></td><td><code>42</code> → <code>[42]</code></td></tr>
           </tbody>

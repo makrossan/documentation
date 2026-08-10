@@ -38,9 +38,12 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/cheatsheets.css
 
 markdown_extensions:
+  - meta
   - attr_list
+  - md_in_html
   - admonition
   - pymdownx.details
   - pymdownx.inlinehilite
@@ -62,8 +65,6 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-#  - VIM: cheatsheets/vim.md
-#  - TMUX: cheatsheets/tmux.md
 
   - Apple:
       - How to:      
