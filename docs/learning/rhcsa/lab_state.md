@@ -25,9 +25,11 @@ Still to discover rather than assume:
 Observed during the 2026-08-09 diagnostic:
 
 - Ordinary account `student` exists and was used on `lab-cli-rhel-46`.
+- Ordinary account `xvin` also exists on `lab-cli-rhel-46`. Module 1 Lesson 1 was accidentally completed as `xvin`, so its submitted artifact is under `/home/xvin`; future training work will use `student` unless a task explicitly says otherwise.
 - SSH on `10.11.11.47` is reachable and presents a host key and authentication prompt.
 - The operator confirmed that `student` does not exist on `lab-cli-rhel-47`; password authentication therefore failed and SCP could not complete.
 - No SSH, firewall, or account configuration was changed to work around the missing secondary account.
+- The `info` command is not installed on `lab-cli-rhel-46`; command-not-found identified the `info` package, but it was correctly not installed during the documentation lab.
 
 ## Fictional enterprise design
 
@@ -93,4 +95,3 @@ The learner confirms the snapshot exists before the exercise begins. Snapshots s
 | Date | Host | Change | Verification | Persistence checked |
 |---|---|---|---|---|
 | 2026-08-09 | `lab-cli-rhel-46` | Created `~/rhcsa-diagnostic` as `student`; no system-wide configuration | Submitted directory, content, link, and permission evidence | Not applicable |
-

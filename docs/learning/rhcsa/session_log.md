@@ -62,3 +62,77 @@ Next action: use the supplied full regex syntax to rebuild production/offline sa
 
 Next action: learner completes the Lesson 1 guided lab in `modules/01-essential-tools/01-command-anatomy-and-documentation.md` on the primary server.
 
+## 2026-08-10 — Module 1, Lesson 1 guided lab reviewed
+
+- Correctly found the required `mkdir`, `cp`, and `ls` options using local help and man pages.
+- Correctly opened `passwd(5)` and found the seven fields in order. Only the field names and manual section were required; the detailed descriptions were not.
+- Confirmed that `info` is absent and declined the installation prompt as instructed.
+- Found `/usr/share/doc/coreutils-common/TODO` and correctly identified `ls` as an alias and `ssh` as `/usr/bin/ssh`.
+- The reference copied long documentation bodies and shell prompts rather than recording concise answers, despite the stated constraint. Documentation-use remains `🟦`.
+
+Next action: replace `command-reference.txt` with the concise version in the guided-lab review, display it, and report its line count. No additional research is required.
+
+## 2026-08-10 — Module 1, Lesson 1 correction attempt 1
+
+- The submitted reference still contained the previously copied `passwd(5)` body and shell prompts, so it did not satisfy the concise-reference requirement.
+- `README` is a valid coreutils documentation filename and is accepted in place of `TODO`.
+- The SSH command-type line was replaced by an unrelated Sites skill reference; the already verified answer remains executable `/usr/bin/ssh`.
+- The requested line count was not supplied.
+
+Next action: delete the entire contents of `command-reference.txt`, paste only the concise reference block from the lesson review, then submit `cat` and `wc -l` output.
+
+## 2026-08-10 — Module 1, Lesson 1 guided lab completed
+
+- Verified the corrected 30-line `command-reference.txt`; all seven sections now contain the required concise findings.
+- Accepted the guided lab as complete. Documentation use remains `🟦` because the final format was completed from a supplied template.
+- Learner correctly identified that the original prompt required overly specific presentation without providing a template or example.
+- Updated the permanent teaching rules: guided artifacts receive an explicit schema/example when format matters, and grading cannot introduce unstated criteria after submission.
+
+Next action: present the Lesson 1 independent task with command-free but explicit requirements, deliverable schema, allowed variation, and acceptance criteria.
+
+## 2026-08-10 — Training account clarified
+
+- Learner confirmed that Module 1 Lesson 1 was accidentally performed after SSH login as `xvin`, explaining why `~` resolved to `/home/xvin`.
+- The work remains valid because it used an ordinary account and required no account-specific configuration.
+- Future exercises standardize on `student`; each lab will begin with identity and hostname verification to prevent work in the wrong home directory.
+
+## 2026-08-10 — Module 1, Lesson 1 independent task issued
+
+- Issued a command-free independent assessment covering identity verification, command anatomy, `--help`, man-page sections, `/usr/share/doc`, command types, concise evidence, and final verification.
+- Added an exact deliverable schema, allowed variation, omissions, and acceptance criteria before the attempt.
+- No snapshot, root access, package installation, or additional infrastructure is required.
+
+Next action: learner completes `modules/01-essential-tools/02-command-documentation-independent-task.md` as `student` and submits the commands, final artifact, line count, and uncertainty note.
+
+## 2026-08-11 — Module 1, Lesson 1 independent attempt 1
+
+- Passed the identity gate as `student` on `lab-cli-rhel-46` with `/home/student`.
+- Produced the required artifact at the correct path with all seven sections, exactly 35 lines, concise content, and complete submission evidence.
+- Correctly researched the RFC 3339 seconds option, grep line-number option, group fields, ABOUT-NLS purpose, command types, and command-token anatomy.
+- DATE recorded `man date` as its source, but the submitted command history shows `date --help` and no `man date` lookup.
+- GROUP-FORMAT recorded only `Section 5`, while the published schema explicitly required the page name and section.
+- Several relative-path mistakes and an accidental shell escape from `vi` were self-corrected without privileged changes.
+
+Result: 7 of 8 acceptance criteria pass. Ratings remain `🟦` pending the two-line correction and a later `info` exercise.
+
+Next action: correct only the DATE source and GROUP-FORMAT manual-page line, then submit the two sections and final line count.
+
+## 2026-08-11 — Module 1, Lesson 1 independent task completed
+
+- DATE now records the documentation source actually shown in the command history: `date --help`.
+- GROUP-FORMAT now identifies the page and section as `group(5)`.
+- The value was submitted as `Manual page: Manual page: group(5)`; the duplicated label is treated as a minor presentation typo, not another failed attempt.
+- The previously verified 35-line structure is unchanged.
+
+Result: independent task passed after targeted feedback. Command syntax and documentation objectives remain `🟦` because corrections were required; both are scheduled for a later unaided retest, and `info` still needs hands-on use after it becomes available.
+
+Next action: begin the Lesson 1 troubleshooting phase.
+
+## 2026-08-11 — Module 1, Lesson 1 troubleshooting issued
+
+- Issued four safe incident cases covering shell tokenization, destructive redirection order, directory traversal permissions, and relative-path resolution.
+- The learner analyzes static transcripts and must not execute the broken commands against real files.
+- Added an exact diagnosis schema, a non-answer formatting example, allowed variation, safety limits, and acceptance criteria.
+- No snapshot, root access, package installation, or additional infrastructure is required.
+
+Next action: learner completes `modules/01-essential-tools/03-command-documentation-troubleshooting.md` and submits research commands, `diagnosis.txt`, its line count, and an uncertainty note.

@@ -74,9 +74,11 @@ nav:
           - Progress Tracker: learning/rhcsa/progress.md
           - Assessments:
               - Initial diagnostic: learning/rhcsa/assessments/00-initial-diagnostic.md
-          - Modules:
-              - Lesson 1 — Command Anatomy and Local Documentation: learning/rhcsa/modules/01-essential-tools/01-command-anatomy-and-documentation.md
- 
+              - Initial diagnostic result: learning/rhcsa/assessments/00-initial-diagnostic-result.md
+          - 01 Essential tools:
+              - Lesson 1 — Command anatomy and local documentation: learning/rhcsa/modules/01-essential-tools/01-command-anatomy-and-documentation.md
+              - Lesson 2 — Command documentation independent task: learning/rhcsa/modules/01-essential-tools/02-command-documentation-independent-task.md
+              - Lesson 3 — Command documentation troubleshooting: learning/rhcsa/modules/01-essential-tools/03-command-documentation-troubleshooting.md
   - Apple:
       - How to:      
         - Import SSH key: apple/import-ssh-key-on-macos.md

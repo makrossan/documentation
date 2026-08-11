@@ -8,7 +8,7 @@ An objective reaches green only after an unaided, verified performance. For pers
 
 | Objective | Level | Last assessed | Evidence / next action |
 |---|---:|---|---|
-| Access a shell prompt and issue commands with correct syntax | 🟦 | 2026-08-09 | Completed the diagnostic after feedback; command/option/operand structure begins Module 1 |
+| Access a shell prompt and issue commands with correct syntax | 🟦 | 2026-08-11 | Independent task passed after two evidence-label corrections; schedule unaided retest |
 | Use input-output redirection (`>`, `>>`, `|`, `2>`, etc.) | 🟩 | 2026-08-09 | Independently used pipelines, append redirection, and corrected stderr redirection; retest use of truncation vs append |
 | Use grep and regular expressions to analyze text | 🟦 | 2026-08-09 | Exact anchored results completed with full syntax help; schedule unaided retest |
 | Access remote systems using SSH | 🟩 | 2026-08-09 | Successful remote login to `10.11.11.46` as `student`; secondary authentication remains unavailable |
@@ -18,7 +18,7 @@ An objective reaches green only after an unaided, verified performance. For pers
 | Create, delete, copy, and move files and directories | 🟩 | 2026-08-09 | Created, cleaned, copied, moved, and verified workspace independently |
 | Create hard and soft links | 🟩 | 2026-08-09 | Both link types created correctly and final link evidence supplied |
 | List, set, and change standard ugo/rwx permissions | 🟦 | 2026-08-09 | File `0640` and directory `0750` correct; directory traversal clarified with help; retest independently |
-| Locate, read, and use `man`, `info`, and `/usr/share/doc` | 🟦 | 2026-08-09 | Located valid `ls` indicator documentation after hints; practice concise extraction plus `info` and `/usr/share/doc` |
+| Locate, read, and use `man`, `info`, and `/usr/share/doc` | 🟦 | 2026-08-11 | Independent task passed after source-label feedback; `info` remains unavailable and an unaided retest is required |
 
 ## Manage software
 
@@ -122,4 +122,3 @@ An objective reaches green only after an unaided, verified performance. For pers
 | 🟩 Can Perform Independently | 5 |
 
 Current weak areas: command/operand structure, concise documentation use, precise regular expressions, archive extraction, and directory permission semantics. These are scheduled for guided work and unaided retesting.
-

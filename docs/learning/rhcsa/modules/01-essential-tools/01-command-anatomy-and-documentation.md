@@ -1,6 +1,6 @@
 # Module 1, Lesson 1 — Command Anatomy and Local Documentation
 
-Status: Learn + Guided Lab  
+Status: Learn + Guided Lab complete; Independent Task next  
 Host: `lab-cli-rhel-46`  
 Privilege: ordinary `student` account  
 Additional infrastructure: none  
@@ -167,3 +167,72 @@ Submit:
 3. A brief note naming the hardest lookup and why.
 
 Do not include full manual pages. This is guided practice, so questions are allowed; the later independent task will remove the headings and documentation hints.
+
+## Guided lab review — 2026-08-10
+
+Your interpretation of `PASSWD-FORMAT` was correct: the requirement was the manual section and the seven field names in order. Their detailed descriptions were not requested.
+
+Accepted findings:
+
+- `mkdir -p` / `--parents` and its documented meaning
+- `cp -p` as `--preserve=mode,ownership,timestamps`
+- `ls -n` / `--numeric-uid-gid`
+- The seven `passwd(5)` fields in the correct order
+- Exact evidence that `info` is not installed, with installation declined
+- The coreutils documentation file `TODO`
+- `ls` is an alias; `ssh` resolves to `/usr/bin/ssh`
+
+The technical lookups were good. The remaining issue is the lesson's main administrative habit: record the answer, not pages of source material or copied shell prompts.
+
+### Targeted correction
+
+No new research is needed. Replace `command-reference.txt` with a concise reference using this content:
+
+```text
+MKDIR
+Option: -p, --parents
+Meaning: create missing parent directories as needed
+Source: mkdir --help
+
+CP
+Option: -p
+Meaning: same as --preserve=mode,ownership,timestamps
+Source: man cp
+
+LS
+Option: -n, --numeric-uid-gid
+Meaning: use a long listing with numeric user and group IDs
+Source: man ls
+
+PASSWD-FORMAT
+Manual section: 5
+Fields: name:password:UID:GID:GECOS:directory:shell
+Source: man 5 passwd
+
+INFO
+Status: unavailable; `info` command not found
+Action: installation declined as instructed
+
+PACKAGE-DOCS
+File: /usr/share/doc/coreutils-common/TODO
+
+COMMAND-TYPES
+ls: alias for `ls -p --color=auto`
+ssh: executable `/usr/bin/ssh`
+```
+
+Display the corrected file and its line count. Once verified, the guided lab is complete and Lesson 1 moves to an independent task.
+
+### Correction attempt 1 — 2026-08-10
+
+The file was edited but not replaced: the long `passwd(5)` body and copied shell prompts remained. `README` is accepted as the selected package-documentation filename. The Sites skill link is unrelated and is not a valid replacement for the verified SSH command type (`/usr/bin/ssh`).
+
+When using `vi`, remove all old lines before inserting the concise block. From normal mode, `:%d` deletes every line; then enter insert mode, paste only the prepared block above, save, and quit. Verify with both `cat` and `wc -l`.
+
+## Guided lab completed — 2026-08-10
+
+The final reference contained the seven required sections and exactly 30 lines. The guided lab is complete.
+
+Account note: the final artifact was created as `xvin` under `/home/xvin` after an unintended SSH login. It remains accepted. Future labs use `student` and begin by verifying the active identity and hostname.
+
+Instructor correction: the first lab prompt described a compact reference but did not provide a sufficiently explicit schema or example, then treated the unstated formatting expectation as a grading requirement. That was not a valid measure of RHCSA ability. Future guided labs will state exact formatting only when it matters and will grade only against criteria supplied before the attempt.

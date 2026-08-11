@@ -6,8 +6,8 @@ This workspace is the persistent record for a practical RHCSA course built aroun
 
 - Stage: Module 1 — Essential command-line tools
 - Diagnostic status: closed; [final result](assessments/00-initial-diagnostic-result.md)
-- Active lesson: [Command anatomy and local documentation](modules/01-essential-tools/01-command-anatomy-and-documentation.md)
-- Next action: complete the Lesson 1 guided lab on `lab-cli-rhel-46`.
+- Active task: [Lesson 1 troubleshooting](modules/01-essential-tools/03-command-documentation-troubleshooting.md)
+- Next action: diagnose the four incident cases on `lab-cli-rhel-46` as `student` without executing the broken commands.
 - Module 1 uses the normal pace, with faster treatment of independently demonstrated strengths.
 
 ## Project files
@@ -32,6 +32,10 @@ This workspace is the persistent record for a practical RHCSA course built aroun
 8. Before risky boot, storage, filesystem, or networking work, pause for a Proxmox snapshot.
 9. In troubleshooting exercises, the fault and repair remain undisclosed until the learner has investigated.
 10. Disposable virtual disks are used for storage work; the operating-system disk is kept out of destructive exercises.
+11. Guided labs provide an explicit deliverable template and one small formatting example whenever output structure matters.
+12. Requirements distinguish exact content, allowed variation, evidence to submit, and material that must be omitted.
+13. Grading uses only criteria stated before the attempt; a new presentation preference cannot become a retroactive failure.
+14. Independent tasks remain command-free, but their required final state and acceptance criteria must be unambiguous.
 
 ## Assessment scale
 
@@ -41,4 +45,3 @@ This workspace is the persistent record for a practical RHCSA course built aroun
 | 🟨 Learning | Concept or workflow is being learned |
 | 🟦 Can Perform With Help | Completed with hints, references to supplied syntax, or correction |
 | 🟩 Can Perform Independently | Completed unaided and verified, including persistence where applicable |
-
