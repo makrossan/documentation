@@ -1,0 +1,4419 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A complete interactive AWK quick reference.">
+      
+      
+        <meta name="author" content="Greivin Venegas">
+      
+      
+        <link rel="canonical" href="https://articles.scuarmander.com/cheatsheets/pre-english-backup/awk/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>AWK Cheat Sheet - Personal Knowledge Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/cheatsheets.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Personal Knowledge Notebook" class="md-header__button md-logo" aria-label="Personal Knowledge Notebook" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Personal Knowledge Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AWK Cheat Sheet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../learning/rhcsa/curriculum/" class="md-tabs__link">
+          
+  
+  
+  Learning
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../apple/import-ssh-key-on-macos/" class="md-tabs__link">
+          
+  
+  
+  Apple
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../bash/delete-files/" class="md-tabs__link">
+          
+  
+  
+  Bash
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../docker/update-portainer-manually/" class="md-tabs__link">
+          
+  
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../linux/cli-navigation-basics/" class="md-tabs__link">
+          
+  
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../microsoft/check-windows-license-with-powershell/" class="md-tabs__link">
+          
+  
+  
+  Microsoft
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../youtube/emporia-notifications/" class="md-tabs__link">
+          
+  
+  
+  YouTube
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Personal Knowledge Notebook" class="md-nav__button md-logo" aria-label="Personal Knowledge Notebook" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    Personal Knowledge Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RHCSA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RHCSA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/lab_state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab State
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/session_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/progress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Progress Tracker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assessments
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Assessments
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/assessments/00-initial-diagnostic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Initial diagnostic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/assessments/00-initial-diagnostic-result/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Initial diagnostic result
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Essential tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 Essential tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/modules/01-essential-tools/01-command-anatomy-and-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson 1 — Command anatomy and local documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/modules/01-essential-tools/02-command-documentation-independent-task/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson 2 — Command documentation independent task
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learning/rhcsa/modules/01-essential-tools/03-command-documentation-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson 3 — Command documentation troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apple
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Apple
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How to
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/import-ssh-key-on-macos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import SSH key
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/edit-hosts-file-on-macos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edit Hosts file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/download-macos-iso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download macOS ISO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/change-macos-shell-to-bash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Zsh to Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/mac-mini-external-ssd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use external SSD as /home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/macos-on-proxmox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run macOS on Proxmox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/tree-command-on-macos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install command tree
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/install-google-chrome-on-macos-with-homebrew/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Chrome - Homebrew
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/persistent-nfs-mount-on-macos-direct-map-sip-compatible/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mount persistent NFS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/search-the-entire-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search entire system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Troubleshooting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/fix-apple-could-not-verify-malware-warning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Malware warning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apple/macbook-low-disk-space-after-synology-active-backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synology Active Backup Snapshots Filling Mac Disk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bash
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bash
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/delete-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delete files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/for-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    for loop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/grep-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    grep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/nano-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nano
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/sed-command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/delete-all-files-except-one/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delete all but one file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/redirect-command-output-to-a-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Redirect output
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/tail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tail
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bash/the-ultimate-tmux-cheat-sheet-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tmux cheat sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docker
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/update-portainer-manually/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update Portainer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/backup-docker-bind-mount-volumes-and-archive-folders-via-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backup bind mounts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/how-i-created-the-disclaimer-page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disclaimer page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-compose-bookstack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BookStack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-compose-guacamole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guacamole
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-compose-keycloak-with-ssl-enabled/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keycloak with SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-compose-up-d-bash-docker-compose-command-not-found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    docker compose not found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-on-raspberry-pi4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker on Pi 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/run-docker-commands-without-sudo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker without sudo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/run-a-docker-compose-yaml-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run Compose YAML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/fix-wordpress-file-upload-permissions-in-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WordPress upload permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/install-docker-on-macos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Docker on macOS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/install-docker-on-ubuntu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Docker on Ubuntu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/install-docker-on-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Docker on Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/filebrowser-default-admin-password-does-not-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Browser admin password
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/filebrowser-default-admin-password-does-not-work-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Browser admin password 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    General
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/cli-navigation-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/configure-ssh-on-debian-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH config example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/install-ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/shell-expansions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell expansions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/hard-links-vs-soft-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hard vs soft links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/configure-logitech-mx-master-3s-gestures-on-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MX Master 3S gestures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/icloud-mail-on-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    iCloud Mail
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debian
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Debian
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/upgrade-debian-12-bookworm-to-debian-13-trixie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debian 12 to 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/install-powershell-on-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install PowerShell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/compress-files-and-directories-to-tgz-on-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compress to TGZ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/install-appimagelauncher-on-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install AppImageLauncher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/map-an-smb-network-share-on-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Map SMB share
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-cdrom-release-file-error-on-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cdrom repo error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-user-is-not-in-the-sudoers-file-on-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sudoers error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-dpkg-lock-frontend-cache-lock-error-on-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dpkg lock error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-wget-certificate-not-trusted-error-on-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    wget certificate error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-debian-repository-update-issue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debian repo update fix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/rdp-to-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDP to Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ubuntu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/install-autokey-on-ubuntu-24-04-lts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install AutoKey
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/stop-ubuntu-keyring-from-asking-for-authentication-when-chrome-opens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chrome keyring prompt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/install-obs-on-ubuntu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install OBS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RHEL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RHEL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-gpg-key-mismatch-rhsm-ssl-trust-and-selinux-epel-conflict-on-rhel-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RHEL 10 GPG and SSL issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Proxmox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-detected-hardware-unit-hang-in-proxmox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox hardware hang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/import-ovf-into-proxmox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import OVF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-proxmox-not-responding-to-ping-after-reconnecting-ethernet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox lost ping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-proxmox-error-0xc0000428-during-windows-10-scsi-install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox 0xc0000428
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/re-enable-root-pam-in-proxmox-and-restore-webui-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restore root login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-zabbix-appliance-out-of-disk-space-on-almalinux-proxmox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zabbix disk full
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESXi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ESXi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/add-vtpm-in-esxi-without-vcenter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add vTPM without vCenter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/esxi-deskmeet-psod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DeskMeet PSOD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/import-or-renew-esxi-ssl-certificate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renew SSL certificate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synology
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Synology
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/synology-abb-vmware-cbt-is-not-enabled-on-vm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VMware CBT issue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/create-a-git-repo-from-an-existing-folder-over-ssh-gitea-port-3022/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git repo over SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NVIDIA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NVIDIA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/fix-nvidia-unified-memory-array-index-out-of-bounds-error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified memory error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microsoft
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Microsoft
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microsoft/check-windows-license-with-powershell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows license in use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microsoft/useful-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Useful commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microsoft/install-drivers-manually-on-windows-10-11-and-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install drivers manually
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microsoft/hide-time-and-date-in-windows-taskbar-with-powershell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hide clock and date
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microsoft/convert-crt-and-key-to-pfx-with-openssl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRT and KEY to PFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YouTube
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    YouTube
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../youtube/emporia-notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emporia notifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<div class="cheatsheet-page cheatsheet-page--awk">
+<main class="outer">
+    <header class="page-header">
+      <div class="page-title">
+        <span class="overline">AWK · FIELD NOTES</span>
+        <h1>Hoja de trucos AWK</h1>
+        <p>Del primer filtro a programas completos, organizado para consulta rápida y uso diario.</p>
+      </div>
+      <div class="header-right">
+        <a href="/#cheat-sheets" class="back-button">Volver al Dashboard anterior</a>
+        <div class="mode-pill-row" aria-label="Compatibilidad">
+          <div class="mode-pill"><span class="key">awk</span><span>POSIX</span></div>
+          <div class="mode-pill"><span class="key">gawk</span><span>GNU</span></div>
+          <div class="mode-pill"><span class="key">mawk</span><span>Rápido</span></div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tab-shell" aria-label="Categorías de la hoja de trucos">
+      <div class="tab-intro">
+        <span>ÍNDICE</span>
+        <small>← → para navegar</small>
+      </div>
+      <div class="tabs" id="tabs" role="tablist" aria-label="Temas de AWK"></div>
+    </nav>
+
+    <section class="section tabcontent" id="topic-panel" role="tabpanel" tabindex="0">
+      <div class="section-header" id="section-header"></div>
+      <div class="section-body">
+        <div class="note" id="topic-note"></div>
+        <div class="grid" id="topic-grid"></div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <div>
+        <span class="footer-mark" aria-hidden="true">AWK</span>
+        <p><strong>¿Necesita profundizar?</strong> Consulte el manual completo de GNU AWK para detalles, casos límite y extensiones.</p>
+      </div>
+      <a href="https://www-zeuthen.desy.de/dv/documentation/unixguide/infohtml/gawk/gawk.html" target="_blank" rel="noreferrer">
+        Abrir la documentación <span aria-hidden="true">↗</span>
+      </a>
+    </footer>
+  </main>
+</div>
+
+<script>
+"use strict";
+
+    const topics = [{"id":"getting-started","label":"Getting started","eyebrow":"01 · FUNDAMENTOS","title":"Primeros pasos con AWK","tag":"De cero a un programa útil","icon":"A","note":"AWK lee una entrada registro por registro, prueba cada patrón y ejecuta su acción. Si omite el patrón, la acción siempre se ejecuta; si omite la acción, AWK imprime el registro.","cards":[{"title":"Formas de invocación","entries":[{"code":"awk 'programa' archivo","description":"Ejecutar un programa corto sobre un archivo."},{"code":"awk 'programa' archivo1 archivo2","description":"Procesar varios archivos como una sola secuencia."},{"code":"awk -F: '{ print $1 }' /etc/passwd","description":"Definir el separador de campos con -F."},{"code":"awk -v limite=10 '$3 > limite' datos","description":"Pasar una variable antes de ejecutar BEGIN."},{"code":"awk -f programa.awk datos","description":"Cargar el programa desde un archivo."},{"code":"comando | awk '{ print $1 }'","description":"Leer desde la salida estándar de otro comando."}]},{"title":"Modelo de ejecución","entries":[{"code":"BEGIN { ... }","description":"Ejecutar una vez antes de leer la entrada."},{"code":"patrón { acción }","description":"Evaluar una vez por cada registro de entrada."},{"code":"END { ... }","description":"Ejecutar una vez al terminar o al llamar exit."},{"code":"patrón","description":"Acción implícita: { print $0 }."},{"code":"{ acción }","description":"Patrón implícito: verdadero para cada registro."},{"code":"# comentario","description":"Comentario desde # hasta el final de la línea."}]},{"title":"Registros y campos esenciales","entries":[{"code":"$0","description":"Registro completo actual."},{"code":"$1 … $NF","description":"Primer campo hasta el último campo."},{"code":"NF","description":"Número de campos del registro actual."},{"code":"NR","description":"Número acumulado del registro entre todos los archivos."},{"code":"FNR","description":"Número de registro dentro del archivo actual."},{"code":"FS / OFS","description":"Separador de campos de entrada / salida."},{"code":"RS / ORS","description":"Separador de registros de entrada / salida."}]},{"title":"Opciones que conviene memorizar","entries":[{"code":"-F 'regex'","description":"Configurar FS desde la línea de comandos."},{"code":"-v nombre=valor","description":"Asignar una variable antes de BEGIN."},{"code":"-f archivo.awk","description":"Leer el programa desde un archivo."},{"code":"-f uno.awk -f dos.awk","description":"Combinar varios archivos de programa."},{"code":"gawk --lint","description":"Avisar sobre construcciones dudosas o no portables."},{"code":"gawk --posix","description":"Restringir extensiones y priorizar POSIX."}]},{"title":"Script completo mínimo","code":"#!/usr/bin/awk -f\n\nBEGIN {\n    FS = \",\"\n    OFS = \"\t\"\n}\n\nNR > 1 && $3 >= 70 {\n    total += $3\n    aprobados++\n    print $1, $3\n}\n\nEND {\n    if (aprobados)\n        printf \"Promedio: %.2f\n\", total / aprobados\n}","caption":"Guárdelo como reporte.awk, aplique chmod +x y ejecútelo con ./reporte.awk datos.csv.","wide":true}]},{"id":"regex","label":"Regex","eyebrow":"02 · COINCIDENCIAS","title":"Expresiones regulares","tag":"ERE de POSIX y patrones dinámicos","icon":"/","note":"AWK usa expresiones regulares extendidas (ERE). Un literal /regex/ prueba $0; los operadores ~ y !~ permiten probar cualquier cadena o campo.","cards":[{"title":"Uso básico","entries":[{"code":"/error/","description":"Registros cuyo $0 contiene error."},{"code":"$2 ~ /^[A-Z]/","description":"El segundo campo comienza con mayúscula."},{"code":"$3 !~ /^(ok|ready)$/","description":"El tercer campo no es exactamente ok ni ready."},{"code":"pat = \"warn|fail\"; $0 ~ pat","description":"Expresión regular dinámica almacenada en una variable."},{"code":"tolower($0) ~ /error/","description":"Búsqueda insensible a mayúsculas portable."},{"code":"gawk 'BEGIN { IGNORECASE=1 } /error/'","description":"Coincidencia global sin distinguir mayúsculas en gawk."}]},{"title":"Metacaracteres ERE","entries":[{"code":".","description":"Cualquier carácter individual."},{"code":"^ / $","description":"Inicio / fin de la cadena."},{"code":"* / + / ?","description":"Cero o más / uno o más / cero o uno."},{"code":"{m,n}","description":"Entre m y n repeticiones (POSIX moderno)."},{"code":"[abc] / [^abc]","description":"Clase positiva / clase negada."},{"code":"(uno|dos)","description":"Agrupación y alternancia."},{"code":"\\.","description":"Punto literal; escape el metacarácter."}]},{"title":"Clases POSIX portables","entries":[{"code":"[[:alpha:]]","description":"Letra según la configuración regional."},{"code":"[[:digit:]]","description":"Dígito decimal."},{"code":"[[:alnum:]]","description":"Letra o dígito."},{"code":"[[:space:]]","description":"Espacio, tabulación o salto de línea."},{"code":"[[:blank:]]","description":"Espacio horizontal o tabulación."},{"code":"[[:lower:]] / [[:upper:]]","description":"Minúscula / mayúscula."},{"code":"[[:xdigit:]]","description":"Dígito hexadecimal."}]},{"title":"match, RSTART y RLENGTH","entries":[{"code":"match(s, /re/)","description":"Posición de la primera coincidencia o 0."},{"code":"RSTART","description":"Índice inicial de la última coincidencia."},{"code":"RLENGTH","description":"Longitud de la última coincidencia; -1 si no hubo."},{"code":"substr(s, RSTART, RLENGTH)","description":"Extraer exactamente el texto encontrado."},{"code":"match(s, /([0-9]+)/, m)","description":"gawk: guardar coincidencia y grupos capturados en m."}]},{"title":"Recetas con regex","code":"# Líneas vacías o solo con espacios\n/^[[:space:]]*$/\n\n# IPv4 aproximada al inicio del registro\nmatch($0, /^([0-9]{1,3}.){3}[0-9]{1,3}/)\n\n# Extraer todos los números de una línea\n{\n    s = $0\n    while (match(s, /[0-9]+([.][0-9]+)?/)) {\n        print substr(s, RSTART, RLENGTH)\n        s = substr(s, RSTART + RLENGTH)\n    }\n}","wide":true}]},{"id":"reading-files","label":"Reading Files","eyebrow":"03 · ENTRADA","title":"Lectura de archivos y flujos","tag":"Campos, registros y getline","icon":"R","note":"FS divide registros en campos y RS divide la entrada en registros. Cambiarlos en BEGIN suele ser la opción más clara; getline se reserva para entradas adicionales o control explícito.","cards":[{"title":"Varios archivos","entries":[{"code":"FILENAME","description":"Nombre del archivo de entrada actual."},{"code":"NR == FNR","description":"Verdadero mientras se procesa el primer archivo."},{"code":"FNR == 1","description":"Primera línea de cada archivo."},{"code":"ARGC / ARGV","description":"Cantidad y vector de argumentos de la invocación."},{"code":"ARGIND","description":"gawk: índice de ARGV del archivo actual."},{"code":"next","description":"Saltar el resto de reglas para este registro."},{"code":"nextfile","description":"Dejar de leer el archivo actual y abrir el siguiente."}]},{"title":"Separadores de entrada","entries":[{"code":"FS = \",\"","description":"Separar campos por una coma literal."},{"code":"FS = \"[[:space:]]+\"","description":"Separar por uno o más espacios POSIX."},{"code":"FS = \"\"","description":"gawk/mawk: separar cada carácter; no es POSIX."},{"code":"RS = \"\"","description":"Modo párrafo: registros separados por líneas vacías."},{"code":"RS = \"END|STOP\"","description":"gawk: RS puede ser una expresión regular."},{"code":"RT","description":"gawk: texto que coincidió con RS."}]},{"title":"Campos especiales de gawk","entries":[{"code":"FIELDWIDTHS = \"5 10 8\"","description":"Dividir por anchos fijos en lugar de FS."},{"code":"FPAT = \"([^,]+)|(\\\"[^\\\"]+\\\")\"","description":"Definir qué constituye un campo, útil para CSV simple."},{"code":"patsplit(s, a, fpat, seps)","description":"Separar por contenido de campo y guardar separadores."},{"code":"split(s, a, fs, seps)","description":"gawk: dividir y capturar separadores coincidentes."}]},{"title":"Variantes de getline","entries":[{"code":"getline","description":"Leer el siguiente registro en $0 y recalcular NF."},{"code":"getline variable","description":"Leer en variable sin modificar $0 ni NF."},{"code":"getline variable \u003c archivo","description":"Leer de otro archivo; pruebe el valor de retorno."},{"code":"comando | getline variable","description":"Leer una línea de la salida de un comando."},{"code":"resultado = getline variable","description":"Guardar el estado: 1 leído, 0 fin de archivo, -1 error."},{"code":"close(archivo_o_comando)","description":"Cerrar un recurso para evitar descriptores agotados."}]},{"title":"Cruzar dos archivos por clave","code":"# usuarios.txt: id nombre\n# ventas.txt:  id importe\nawk '\n    NR == FNR { nombre[$1] = $2; next }\n    $1 in nombre { total[nombre[$1]] += $2 }\n    END {\n        for (persona in total)\n            print persona, total[persona]\n    }\n' usuarios.txt ventas.txt","caption":"NR == FNR carga el primer archivo; next evita que ese registro pase a las reglas de ventas.","wide":true}]},{"id":"patterns-actions-variables","label":"Patterns, Actions, and Variables","eyebrow":"04 · ESTRUCTURA","title":"Patrones, acciones y variables","tag":"El corazón del lenguaje","icon":"P","note":"Cada regla tiene la forma patrón { acción }. Las reglas se prueban en orden para el mismo registro, salvo que next, nextfile o exit cambien el flujo.","cards":[{"title":"Clases de patrón","entries":[{"code":"BEGIN / END","description":"Antes de la entrada / después de toda la entrada."},{"code":"BEGINFILE / ENDFILE","description":"gawk: antes y después de cada archivo."},{"code":"/regex/","description":"Coincidencia contra $0."},{"code":"$3 > 100","description":"Expresión booleana."},{"code":"/inicio/, /fin/","description":"Rango inclusivo con estado entre dos patrones."},{"code":"pat1 && pat2","description":"Componer condiciones con lógica booleana."}]},{"title":"Variables integradas de campos","entries":[{"code":"FS / OFS","description":"Separador de campos de entrada / salida."},{"code":"RS / ORS","description":"Separador de registros de entrada / salida."},{"code":"NF / NR / FNR","description":"Campos actuales / registro total / registro del archivo."},{"code":"FILENAME","description":"Nombre del archivo en curso."},{"code":"SUBSEP","description":"Separador interno para índices multidimensionales simulados."},{"code":"CONVFMT / OFMT","description":"Formato de conversión numérica / salida numérica de print."}]},{"title":"Variables desde la shell","entries":[{"code":"awk -v x=valor 'BEGIN{print x}'","description":"Asignación disponible antes de BEGIN."},{"code":"awk '{...}' x=valor archivo","description":"Asignación procesada en su posición dentro de ARGV."},{"code":"ENVIRON[\"HOME\"]","description":"Leer una variable de entorno dentro de AWK."},{"code":"export MODO=prod","description":"Exporte en la shell antes de usar ENVIRON[\"MODO\"]."},{"code":"ARGV[1] = \"\"","description":"Eliminar un argumento para que no se trate como archivo."}]},{"title":"Cambiar campos y reconstruir $0","entries":[{"code":"$2 = toupper($2)","description":"Modificar un campo reconstruye $0 usando OFS."},{"code":"$1 = $1","description":"Forzar la reconstrucción del registro con el OFS actual."},{"code":"NF--","description":"Reducir NF elimina el último campo en gawk/mawk."},{"code":"$0 = nueva_linea","description":"Asignar $0 vuelve a dividir campos usando FS."}]},{"title":"Rango de patrones","code":"# Imprimir desde [section] hasta la próxima línea vacía\n/^[section]$/, /^[[:space:]]*$/ {\n    print\n}\n\n# Las dos fronteras se evalúan por separado.\n# Un rango no puede activarse y desactivarse en el\n# mismo registro en awk tradicional.","wide":true}]},{"id":"operators","label":"Operators","eyebrow":"05 · EXPRESIONES","title":"Operadores","tag":"Cálculo, comparación y control","icon":"+","note":"AWK convierte entre números y cadenas según el contexto. Sea explícito con +0 o concatenando \"\" cuando datos como 001, fechas o identificadores no deban compararse de forma ambigua.","cards":[{"title":"Aritmética y asignación","entries":[{"code":"+  -  *  /  %  ^","description":"Suma, resta, multiplicación, división, módulo y potencia."},{"code":"++x / x++","description":"Incremento previo / posterior."},{"code":"--x / x--","description":"Decremento previo / posterior."},{"code":"= += -= *= /= %= ^=","description":"Asignación simple y compuesta."},{"code":"-x / +x","description":"Negación / conversión numérica unaria."}]},{"title":"Comparación y lógica","entries":[{"code":"== != \u003c \u003c= > >=","description":"Comparaciones numéricas o de cadenas según operandos."},{"code":"&& / || / !","description":"Y, O y negación lógica; && y || cortocircuitan."},{"code":"cadena ~ /re/","description":"La cadena coincide con la expresión regular."},{"code":"cadena !~ /re/","description":"La cadena no coincide con la expresión regular."},{"code":"índice in array","description":"Probar existencia sin crear el elemento."}]},{"title":"Operadores propios de AWK","entries":[{"code":"a b","description":"Concatenación sin operador visible."},{"code":"cond ? sí : no","description":"Expresión condicional ternaria."},{"code":"$expresión","description":"Referencia indirecta a un campo; $(i + 1)."},{"code":"expr1, expr2","description":"Coma en listas de argumentos o patrón de rango."},{"code":"(i, j) in a","description":"Probar un índice compuesto con SUBSEP."}]},{"title":"Precedencia práctica","code":"# Use paréntesis cuando mezcle familias\npromedio = (suma + extra) / (n + 1)\n\n# La concatenación puede sorprender\nclave = (prefijo i) \"-\" sufijo\n\n# Asignación dentro de una condición\nif ((linea = getline) > 0) print $0\n\n# Ternario dentro de printf\nprintf \"%s\n\", (n ? total / n : \"N/A\")","caption":"Los paréntesis convierten la intención en documentación y evitan depender de una tabla de precedencia.","wide":true}]},{"id":"functions","label":"Functions","eyebrow":"06 · REUTILIZACIÓN","title":"Funciones","tag":"Texto, números y funciones propias","icon":"ƒ","note":"Los argumentos escalares se pasan por valor y los arrays por referencia. AWK no tiene variables locales declaradas: por convención se agregan como parámetros extra después de varios espacios.","cards":[{"title":"Funciones de cadenas","entries":[{"code":"length(s)","description":"Longitud de s; sin argumento usa $0."},{"code":"substr(s, inicio, largo)","description":"Subcadena; los índices empiezan en 1."},{"code":"index(s, busca)","description":"Posición de busca en s o 0."},{"code":"tolower(s) / toupper(s)","description":"Convertir a minúsculas / mayúsculas."},{"code":"sub(re, repl, objetivo)","description":"Reemplazar la primera coincidencia; objetivo por defecto $0."},{"code":"gsub(re, repl, objetivo)","description":"Reemplazar todas las coincidencias."},{"code":"gensub(re, repl, cómo, objetivo)","description":"gawk: reemplazo con referencias \\1, sin alterar el objetivo."}]},{"title":"Dividir y encontrar","entries":[{"code":"split(s, a, sep)","description":"Dividir s en a[1]…a[n] y devolver n."},{"code":"patsplit(s, a, re)","description":"gawk: construir campos con lo que coincide."},{"code":"match(s, re)","description":"Encontrar re y configurar RSTART / RLENGTH."},{"code":"sprintf(formato, args)","description":"Formatear y devolver una cadena sin imprimir."}]},{"title":"Funciones numéricas","entries":[{"code":"int(x)","description":"Truncar hacia cero."},{"code":"sqrt(x) / exp(x) / log(x)","description":"Raíz cuadrada, exponencial y logaritmo natural."},{"code":"sin(x) / cos(x) / atan2(y,x)","description":"Trigonometría en radianes."},{"code":"rand()","description":"Pseudoaleatorio en [0, 1)."},{"code":"srand(semilla)","description":"Cambiar la semilla y devolver la anterior."}]},{"title":"Sistema, tiempo y bits","entries":[{"code":"system(comando)","description":"Ejecutar un comando y devolver su estado."},{"code":"systime()","description":"gawk: segundos Unix del momento actual."},{"code":"strftime(formato, tiempo)","description":"gawk: formatear fecha y hora."},{"code":"mktime(fecha)","description":"gawk: convertir YYYY MM DD HH MM SS a tiempo Unix."},{"code":"and(), or(), xor(), compl()","description":"gawk: operaciones de bits."},{"code":"lshift() / rshift()","description":"gawk: desplazamiento de bits."}]},{"title":"Función propia con locales","code":"function trim(s) {\n    sub(/^[[:space:]]+/, \"\", s)\n    sub(/[[:space:]]+$/, \"\", s)\n    return s\n}\n\n# Los parámetros tras espacios son locales por convención\nfunction media(a, n,    i, suma) {\n    for (i = 1; i \u003c= n; i++) suma += a[i]\n    return n ? suma / n : 0\n}","wide":true}]},{"id":"arrays","label":"Arrays","eyebrow":"07 · DATOS","title":"Arrays asociativos","tag":"Conteos, índices y agrupación","icon":"[ ]","note":"Todos los arrays de AWK son asociativos: sus índices se convierten en cadenas. No asuma un orden al recorrer for (k in a); ordénelo explícitamente cuando el resultado lo requiera.","cards":[{"title":"Operaciones esenciales","entries":[{"code":"a[clave] = valor","description":"Crear o actualizar un elemento."},{"code":"a[clave]++","description":"Contador por clave; parte de cero."},{"code":"clave in a","description":"Comprobar existencia sin crear un elemento."},{"code":"delete a[clave]","description":"Eliminar un elemento."},{"code":"delete a","description":"gawk/mawk y POSIX 2012+: vaciar el array completo."},{"code":"for (clave in a)","description":"Recorrer claves en orden no especificado."}]},{"title":"Índices multidimensionales","entries":[{"code":"a[i, j]","description":"Índice compuesto equivalente a i SUBSEP j."},{"code":"(i, j) in a","description":"Probar un índice compuesto."},{"code":"split(clave, partes, SUBSEP)","description":"Descomponer una clave compuesta."},{"code":"a[i][j]","description":"gawk: arrays de arrays verdaderos."},{"code":"isarray(x)","description":"gawk: comprobar si x es un array."},{"code":"length(a)","description":"gawk/mawk: número de elementos; no es POSIX clásico."}]},{"title":"Ordenar en gawk","entries":[{"code":"asort(origen, destino)","description":"Ordenar valores en destino[1…n]."},{"code":"asorti(origen, destino)","description":"Ordenar índices en destino[1…n]."},{"code":"PROCINFO[\"sorted_in\"]","description":"Controlar el orden posterior de for (k in a)."},{"code":"@ind_str_asc","description":"Índices como cadenas en orden ascendente."},{"code":"@val_num_desc","description":"Valores numéricos en orden descendente."}]},{"title":"Frecuencias ordenadas por cantidad","code":"# gawk: imprimir palabras más frecuentes primero\n{\n    for (i = 1; i \u003c= NF; i++)\n        frecuencia[tolower($i)]++\n}\nEND {\n    PROCINFO[\"sorted_in\"] = \"@val_num_desc\"\n    for (palabra in frecuencia)\n        printf \"%7d  %s\n\", frecuencia[palabra], palabra\n}","wide":true}]},{"id":"conditions","label":"Conditions","eyebrow":"08 · DECISIONES","title":"Condiciones","tag":"Filtrar y ramificar","icon":"?","note":"En contexto booleano, cero y la cadena vacía son falsos; todo lo demás es verdadero. Una cadena numérica como \"0\" puede conservar atributos de cadena y número, así que valide entradas cuando importe.","cards":[{"title":"if, else if y else","code":"if ($3 >= 90) {\n    nivel = \"excelente\"\n} else if ($3 >= 70) {\n    nivel = \"aprobado\"\n} else {\n    nivel = \"revisar\"\n}\n\nprint $1, nivel"},{"title":"Patrones como guardas","entries":[{"code":"NF == 0 { next }","description":"Ignorar registros sin campos."},{"code":"$1 ~ /^#/ { next }","description":"Ignorar comentarios."},{"code":"$3 + 0 > 100","description":"Forzar comparación numérica."},{"code":"($2 \"\") == \"001\"","description":"Forzar comparación como cadena."},{"code":"clave in visto","description":"Rama basada en existencia de clave."},{"code":"!visto[$1]++","description":"Verdadero solo en la primera aparición de $1."}]},{"title":"Validación robusta","entries":[{"code":"$2 ~ /^-?[0-9]+([.][0-9]+)?$/","description":"Validar un decimal sencillo antes de convertir."},{"code":"NF != esperado","description":"Detectar filas con cantidad incorrecta de campos."},{"code":"(getline) > 0","description":"Lectura correcta."},{"code":"(getline) == 0","description":"Fin de archivo."},{"code":"(getline) \u003c 0","description":"Error de lectura; ERRNO aporta detalle en gawk."},{"code":"ERRNO","description":"gawk: mensaje asociado al último error de E/S."}]},{"title":"Salir con un estado útil","code":"BEGIN { errores = 0 }\n\nNF != 4 {\n    printf \"Fila %d inválida: %s\n\", FNR, $0 > \"/dev/stderr\"\n    errores++\n}\n\nEND {\n    if (errores)\n        exit 2\n}","caption":"El estado de exit permite que scripts de shell, CI o cron sepan si la validación falló.","wide":true}]},{"id":"loops","label":"Loops","eyebrow":"09 · REPETICIÓN","title":"Bucles y control de flujo","tag":"Recorrer campos, arrays y entradas","icon":"↻","note":"Use for numérico cuando el orden importa y for (clave in array) cuando solo necesita visitar cada elemento. El orden de un array asociativo no está definido por POSIX.","cards":[{"title":"for numérico","code":"# Recorrer todos los campos\nfor (i = 1; i \u003c= NF; i++) {\n    if ($i ~ /^[0-9]+$/)\n        suma += $i\n}\n\n# Recorrer en sentido inverso\nfor (i = NF; i >= 1; i--)\n    printf \"%s%s\", $i, (i > 1 ? OFS : ORS)"},{"title":"for asociativo","code":"# Contar y recorrer claves\n{ cuenta[$1]++ }\n\nEND {\n    for (clave in cuenta) {\n        if (cuenta[clave] \u003c 2)\n            continue\n        print clave, cuenta[clave]\n    }\n}"},{"title":"while y do…while","entries":[{"code":"while (condición) { ... }","description":"Probar antes de cada iteración."},{"code":"do { ... } while (condición)","description":"Ejecutar al menos una vez."},{"code":"while ((getline linea \u003c f) > 0)","description":"Leer un archivo auxiliar línea por línea."},{"code":"while (match(s, re))","description":"Consumir coincidencias repetidas dentro de una cadena."}]},{"title":"Control de flujo","entries":[{"code":"break","description":"Salir del bucle más cercano."},{"code":"continue","description":"Saltar a la siguiente iteración del bucle."},{"code":"next","description":"Saltar el registro y reiniciar las reglas."},{"code":"nextfile","description":"Saltar el resto del archivo actual."},{"code":"exit / exit código","description":"Finalizar entrada, ejecutar END y devolver un estado."},{"code":"return valor","description":"Salir de una función con un valor."}]},{"title":"Consumir todas las coincidencias","code":"{\n    resto = $0\n    while (match(resto, /[[:alpha:]]+@[[:alnum:].-]+/)) {\n        correo = substr(resto, RSTART, RLENGTH)\n        print correo\n        resto = substr(resto, RSTART + RLENGTH)\n    }\n}","wide":true}]},{"id":"formatted-printing","label":"Formatted Printing","eyebrow":"10 · SALIDA","title":"Impresión con formato","tag":"print, printf y redirección","icon":"%","note":"print agrega ORS y separa argumentos con OFS. printf usa un formato explícito y no agrega salto de línea: inclúyalo con \\n cuando lo necesite.","cards":[{"title":"print frente a printf","entries":[{"code":"print $1, $2","description":"Separar argumentos con OFS y terminar con ORS."},{"code":"print $1 $2","description":"Concatenar sin OFS."},{"code":"printf \"%s %d\\n\", $1, $2","description":"Control preciso de tipos, ancho y terminación."},{"code":"texto = sprintf(\"%.2f\", n)","description":"Construir una cadena formateada."},{"code":"OFMT = \"%.6g\"","description":"Formato numérico usado por print."},{"code":"CONVFMT = \"%.6g\"","description":"Formato al convertir números a cadenas."}]},{"title":"Conversiones de printf","entries":[{"code":"%s","description":"Cadena."},{"code":"%d / %i","description":"Entero decimal."},{"code":"%f","description":"Punto flotante decimal."},{"code":"%e / %E","description":"Notación científica."},{"code":"%g / %G","description":"Formato compacto automático."},{"code":"%o / %x / %X","description":"Octal / hexadecimal."},{"code":"%c / %%","description":"Carácter / signo de porcentaje literal."}]},{"title":"Ancho, precisión y alineación","entries":[{"code":"%10s","description":"Cadena alineada a la derecha en 10 columnas."},{"code":"%-10s","description":"Cadena alineada a la izquierda."},{"code":"%08d","description":"Entero de 8 posiciones rellenado con ceros."},{"code":"%10.2f","description":"Ancho 10 y dos decimales."},{"code":"%*.*f","description":"Tomar ancho y precisión desde argumentos."},{"code":"%+.2f","description":"Mostrar siempre el signo."}]},{"title":"Redirección y tuberías","entries":[{"code":"print > \"salida.txt\"","description":"Redirigir; AWK mantiene el archivo abierto."},{"code":"print >> \"salida.txt\"","description":"Agregar al final."},{"code":"print | \"sort\"","description":"Enviar salida a un comando."},{"code":"print |& comando","description":"gawk: comunicación bidireccional con coproceso."},{"code":"close(destino)","description":"Cerrar archivo o tubería cuando ya no se use."},{"code":"fflush(destino)","description":"gawk/POSIX reciente: vaciar el búfer de salida."}]},{"title":"Tabla alineada","code":"BEGIN {\n    printf \"%-20s %8s %12s\n\", \"Producto\", \"Cant.\", \"Total\"\n    printf \"%-20s %8s %12s\n\", \"--------------------\", \"--------\", \"------------\"\n}\n{\n    total = $2 * $3\n    printf \"%-20.20s %8d %12.2f\n\", $1, $2, total\n    gran_total += total\n}\nEND {\n    printf \"%41s\n\", \"------------\"\n    printf \"%-29s %12.2f\n\", \"TOTAL\", gran_total\n}","wide":true}]},{"id":"miscellaneous","label":"Miscellaneous","eyebrow":"11 · CAJA DE HERRAMIENTAS","title":"Miscelánea y recetas","tag":"One-liners, portabilidad y depuración","icon":"…","note":"Para automatización durable, prefiera programas en archivos, comillas simples en la shell, variables con -v y características POSIX salvo que haya decidido depender de gawk.","cards":[{"title":"One-liners imprescindibles","entries":[{"code":"awk 'NF' archivo","description":"Eliminar líneas vacías."},{"code":"awk '!visto[$0]++' archivo","description":"Eliminar líneas duplicadas conservando orden."},{"code":"awk '{ suma += $1 } END { print suma }'","description":"Sumar la primera columna."},{"code":"awk 'END { print NR }' archivo","description":"Contar registros."},{"code":"awk '{ print NF, $0 }' archivo","description":"Prefijar cada línea con su número de campos."},{"code":"awk 'length > max { max=length; linea=$0 } END{print linea}'","description":"Encontrar la línea más larga."}]},{"title":"Reformatear y seleccionar","entries":[{"code":"awk -F, -v OFS=';' '{$1=$1; print}'","description":"Cambiar el separador de campos."},{"code":"awk '{ print $NF }'","description":"Imprimir el último campo."},{"code":"awk 'NR >= 10 && NR \u003c= 20'","description":"Imprimir un intervalo de líneas."},{"code":"awk '$1 == max { print }' max=42","description":"Asignar una variable en la invocación."},{"code":"awk '{ for(i=NF;i;i--) printf \"%s%s\",$i,(i>1?OFS:ORS) }'","description":"Invertir el orden de campos."}]},{"title":"Shell y seguridad","entries":[{"code":"awk -v valor=\"$variable\" '...'","description":"Pasar datos de shell sin inyectarlos en el programa."},{"code":"'programa AWK'","description":"Use comillas simples para proteger $, \\ y espacios de la shell."},{"code":"system(\"cmd \" dato)","description":"Riesgoso con entrada externa; evite construir comandos sin escapar."},{"code":"--","description":"Algunas implementaciones marcan fin de opciones; revise portabilidad."},{"code":"/dev/stderr","description":"Común, pero no POSIX; en gawk use print ... > \"/dev/stderr\"."}]},{"title":"Portabilidad y rendimiento","entries":[{"code":"LC_ALL=C","description":"Resultados de clases, orden y números más predecibles y rápidos."},{"code":"gawk --lint --posix -f script.awk","description":"Detectar extensiones al probar portabilidad."},{"code":"next","description":"Evitar trabajo innecesario en reglas posteriores."},{"code":"close()","description":"Evitar agotar archivos y procesos abiertos."},{"code":"sub() antes que gsub()","description":"Si solo necesita reemplazar la primera coincidencia."},{"code":"regex literal","description":"Preferible a reconstruir la misma regex dinámica por registro."}]},{"title":"Depuración y diagnóstico","code":"# Trazas a stderr (gawk y Unix habituales)\nprint \"DEBUG NR=\" NR \", NF=\" NF > \"/dev/stderr\"\n\n# Mostrar campos delimitados inequívocamente\nfor (i = 1; i \u003c= NF; i++)\n    printf \"[$%d]=\u003c%s>\n\", i, $i > \"/dev/stderr\"\n\n# Comprobar sintaxis y advertencias\ngawk --lint -f programa.awk \u003c/dev/null\n\n# Perfil de ejecución en gawk\ngawk --profile -f programa.awk datos","wide":true}]}];
+    let activeId = topics[0].id;
+    let copySequence = 0;
+    const copyValues = new Map();
+
+    const tabsElement = document.getElementById("tabs");
+    const panelElement = document.getElementById("topic-panel");
+    const headerElement = document.getElementById("section-header");
+    const noteElement = document.getElementById("topic-note");
+    const gridElement = document.getElementById("topic-grid");
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function registerCopy(value) {
+      const id = "copy-" + (++copySequence);
+      copyValues.set(id, value);
+      return id;
+    }
+
+    function copyButton(value, compact) {
+      const id = registerCopy(value);
+      return '<button class="copy-button' + (compact ? ' compact' : '') +
+        '" type="button" data-copy-id="' + id +
+        '" aria-label="Copiar código" title="Copiar"><span aria-hidden="true">⧉</span>' +
+        (compact ? "" : "<span>Copiar</span>") + "</button>";
+    }
+
+    function renderTabs() {
+      tabsElement.innerHTML = topics.map(function (topic, index) {
+        const active = topic.id === activeId;
+        return '<button class="tablinks' + (active ? ' active' : '') +
+          '" type="button" role="tab" id="tab-' + escapeHtml(topic.id) +
+          '" data-topic-id="' + escapeHtml(topic.id) +
+          '" aria-selected="' + active +
+          '" aria-controls="topic-panel" tabindex="' + (active ? "0" : "-1") + '">' +
+          '<span class="tab-number">' + String(index + 1).padStart(2, "0") + '</span>' +
+          '<span>' + escapeHtml(topic.label) + '</span></button>';
+      }).join("");
+    }
+
+    function renderCard(card) {
+      const entries = card.entries
+        ? '<ul class="cmd-list">' + card.entries.map(function (entry) {
+            return '<li><span class="command-wrap"><code>' + escapeHtml(entry.code) + '</code>' +
+              copyButton(entry.code, true) + '</span><span class="desc">' +
+              escapeHtml(entry.description) + '</span></li>';
+          }).join("") + '</ul>'
+        : "";
+
+      const code = card.code
+        ? '<div class="code-wrap">' + copyButton(card.code, false) +
+          '<pre><code>' + escapeHtml(card.code) + '</code></pre></div>'
+        : "";
+
+      const caption = card.caption
+        ? '<p class="caption">' + escapeHtml(card.caption) + '</p>'
+        : "";
+
+      return '<article class="box' + (card.wide ? ' box-wide' : '') + '">' +
+        '<div class="box-title"><span class="dot" aria-hidden="true"></span><span>' +
+        escapeHtml(card.title) + '</span></div>' + entries + code + caption + '</article>';
+    }
+
+    function renderPanel() {
+      const topic = topics.find(function (item) { return item.id === activeId; }) || topics[0];
+      copySequence = 0;
+      copyValues.clear();
+
+      panelElement.setAttribute("aria-labelledby", "tab-" + topic.id);
+      panelElement.dataset.topic = topic.id;
+      headerElement.innerHTML =
+        '<div><span class="eyebrow">' + escapeHtml(topic.eyebrow) + '</span><h2>' +
+        escapeHtml(topic.title) + '</h2></div><span class="tag">' +
+        escapeHtml(topic.tag) + '</span>';
+      noteElement.innerHTML =
+        '<div class="note-icon" aria-hidden="true">' + escapeHtml(topic.icon) +
+        '</div><div><strong>Idea clave.</strong> ' + escapeHtml(topic.note) + '</div>';
+      gridElement.innerHTML = topic.cards.map(renderCard).join("");
+
+      panelElement.style.animation = "none";
+      void panelElement.offsetWidth;
+      panelElement.style.animation = "";
+    }
+
+    function openTopic(id, options) {
+      const settings = options || {};
+      if (!topics.some(function (topic) { return topic.id === id; })) return;
+      activeId = id;
+      renderTabs();
+      renderPanel();
+
+      if (settings.updateHash !== false) {
+        history.replaceState(null, "", "#" + id);
+      }
+      if (settings.scroll) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      if (settings.focus) {
+        const tab = tabsElement.querySelector('[data-topic-id="' + CSS.escape(id) + '"]');
+        if (tab) tab.focus();
+      }
+    }
+
+    async function copyText(value) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(value);
+        return;
+      }
+      const area = document.createElement("textarea");
+      area.value = value;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand("copy");
+      area.remove();
+    }
+
+    tabsElement.addEventListener("click", function (event) {
+      const tab = event.target.closest("[data-topic-id]");
+      if (tab) openTopic(tab.dataset.topicId, { updateHash: true, scroll: true });
+    });
+
+    tabsElement.addEventListener("keydown", function (event) {
+      const tab = event.target.closest("[data-topic-id]");
+      if (!tab) return;
+      const index = topics.findIndex(function (topic) { return topic.id === tab.dataset.topicId; });
+      let nextIndex = index;
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % topics.length;
+      else if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + topics.length) % topics.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = topics.length - 1;
+      else return;
+
+      event.preventDefault();
+      openTopic(topics[nextIndex].id, { updateHash: true, focus: true });
+    });
+
+    gridElement.addEventListener("click", async function (event) {
+      const button = event.target.closest("[data-copy-id]");
+      if (!button) return;
+      const value = copyValues.get(button.dataset.copyId);
+      if (typeof value !== "string") return;
+
+      try {
+        await copyText(value);
+        const original = button.innerHTML;
+        button.innerHTML = button.classList.contains("compact")
+          ? '<span aria-hidden="true">✓</span>'
+          : '<span aria-hidden="true">✓</span><span>Copiado</span>';
+        button.title = "Copiado";
+        window.setTimeout(function () {
+          button.innerHTML = original;
+          button.title = "Copiar";
+        }, 1400);
+      } catch (error) {
+        button.title = "No se pudo copiar";
+      }
+    });
+
+    window.addEventListener("hashchange", function () {
+      const id = location.hash.slice(1);
+      if (id) openTopic(id, { updateHash: false });
+    });
+
+    const initialId = location.hash.slice(1);
+    openTopic(
+      topics.some(function (topic) { return topic.id === initialId; }) ? initialId : topics[0].id,
+      { updateHash: false }
+    );
+</script>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <div class="custom-footer">
+  <a href="/privacy/">Privacy Policy</a>
+  <span>•</span>
+  <a href="/disclaimer/">Disclaimer</a>
+  <span class="copyright">
+    © 2026 Greivin Venegas. All rights reserved.
+  </span>
+</div>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
